@@ -4,6 +4,7 @@ import App from "./App";
 import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/team";
 import Login from "./scenes/login";
+import ScheduleManagement from "./scenes/schedule";
 import { UserProvider } from './UserContext';
 const AppRouter = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -16,6 +17,7 @@ const AppRouter = () => {
           <Route path="/" element={authenticated ? <App /> : <Navigate to="/login" />} >
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/schedule-management" element={<ScheduleManagement />} />
           </Route>
         </Routes>
       </Router>
