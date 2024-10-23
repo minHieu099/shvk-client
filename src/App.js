@@ -18,11 +18,11 @@ function App() {
             <SideBar />
             <Box
               sx={{
-                flexGrow: 1,
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
+                overflowY: "auto",
+                flex: 1,
                 maxWidth: "100%",
+                marginLeft: '3%',   // Cách lề trái 3%
+                marginRight: '3%',  // Cách lề phải 3%
               }}
             >
               <Navbar />

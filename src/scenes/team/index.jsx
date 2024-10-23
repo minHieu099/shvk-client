@@ -33,61 +33,84 @@ function Team() {
   };
 
   return (
-    <Box>
-      <Box display="flex" justifyContent="space-between" mb={2}>
-        <Select
-          value={selectedGroup}
-          onChange={(e) => setSelectedGroup(e.target.value)}
-          displayEmpty
-        >
-          <MenuItem value="Tất cả">Tất cả</MenuItem>
-          <MenuItem value="Cụm 21">Cụm 21</MenuItem>
-          <MenuItem value="Cụm 22">Cụm 22</MenuItem>
-          <MenuItem value="Cụm 23">Cụm 23</MenuItem>
-        </Select>
-        <Button variant="contained" color="primary" onClick={() => setIsModalOpen(true)}>
-          Thêm cán bộ
-        </Button>
-      </Box>
-      <AddOfficerModal open={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddOfficer} />
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Họ tên</TableCell>
-              <TableCell>Cấp bậc</TableCell>
-              <TableCell>Đơn vị</TableCell>
-              <TableCell>Chức vụ</TableCell>
-              <TableCell>Chức năng</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredOfficers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((officer, index) => (
-              <TableRow key={index}>
-                <TableCell>{officer['Họ tên']}</TableCell>
-                <TableCell>{officer['Cấp bậc']}</TableCell>
-                <TableCell>{officer['Đơn vị']}</TableCell>
-                <TableCell>{officer['Chức vụ']}</TableCell>
-                <TableCell>
-                  <IconButton><Visibility /></IconButton>
-                  <IconButton><Edit /></IconButton>
-                  <IconButton><Delete /></IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={filteredOfficers.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </TableContainer>
-    </Box>
+<Box>
+  <Box display="flex" justifyContent="space-between" mb={2}>
+    <Select
+      value={selectedGroup}
+      onChange={(e) => setSelectedGroup(e.target.value)}
+      displayEmpty
+      style={{
+        width: '8%',         // Độ rộng của select
+        marginLeft: '1%',     // Cách lề trái 3%
+        height: '42px',
+      }}
+    >
+      <MenuItem value="Tất cả">Tất cả</MenuItem>
+      <MenuItem value="Cụm 21">Cụm 21</MenuItem>
+      <MenuItem value="Cụm 22">Cụm 22</MenuItem>
+      <MenuItem value="Cụm 23">Cụm 23</MenuItem>
+    </Select>
+
+    <Button
+      variant="contained"
+      style={{
+        backgroundColor: 'green',   // Màu xanh lá cây
+        color: 'white',             // Chữ trắng
+        width: '10%',               // Độ rộng button
+        marginRight: '1%',          // Cách lề phải 3%
+//        padding: '6px',             // Padding để tạo chiều cao hơn chữ 6px
+        display: 'flex',            // Sử dụng flexbox để căn giữa chữ
+        justifyContent: 'center',   // Căn giữa chữ theo chiều ngang
+        alignItems: 'center',       // Căn giữa chữ theo chiều dọc
+        height: '42px',
+      }}
+      onClick={() => setIsModalOpen(true)}
+    >
+      Thêm cán bộ
+    </Button>
+  </Box>
+
+  <AddOfficerModal open={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddOfficer} />
+
+  <TableContainer component={Paper} style={{ margin: '0 1%', width: '98%' }}>  {/* Cách đều 2 lề khoảng 3% */}
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Họ tên</TableCell>
+          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Cấp bậc</TableCell>
+          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Đơn vị</TableCell>
+          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Chức vụ</TableCell>
+          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Chức năng</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {filteredOfficers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((officer, index) => (
+          <TableRow key={index}>
+            <TableCell style={{ textAlign: 'center' }}>{officer['Họ tên']}</TableCell>
+            <TableCell style={{ textAlign: 'center' }}>{officer['Cấp bậc']}</TableCell>
+            <TableCell style={{ textAlign: 'center' }}>{officer['Đơn vị']}</TableCell>
+            <TableCell style={{ textAlign: 'center' }}>{officer['Chức vụ']}</TableCell>
+            <TableCell style={{ textAlign: 'center' }}>
+              <IconButton><Visibility /></IconButton>
+              <IconButton><Edit /></IconButton>
+              <IconButton><Delete /></IconButton>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+    <TablePagination
+      rowsPerPageOptions={[5, 10, 25]}
+      component="div"
+      count={filteredOfficers.length}
+      rowsPerPage={rowsPerPage}
+      page={page}
+      onPageChange={handleChangePage}
+      onRowsPerPageChange={handleChangeRowsPerPage}
+    />
+  </TableContainer>
+</Box>
+
   );
 }
 

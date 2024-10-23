@@ -76,7 +76,7 @@ const SideBar = () => {
                   fontWeight="bold"
                   textTransform="capitalize"
                   color={colors.greenAccent[500]}
-                  ml="24px"
+                  ml="35px"
                 >
                   Trung tâm 286
                 </Typography>
