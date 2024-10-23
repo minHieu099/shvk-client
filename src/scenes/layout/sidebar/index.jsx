@@ -34,6 +34,10 @@ const SideBar = () => {
       rootStyles={{
         border: 0,
         height: "100%",
+
+      }}
+      sx={{
+        overflowY: "hidden", // Ẩn thanh 
       }}
       collapsed={collapsed}
       onBackdropClick={() => setToggled(false)}

@@ -1,0 +1,22 @@
+[
+    {
+        "DocumentName": "Sổ nhật ký trực chỉ huy",
+        "Status": true
+    },
+    {
+        "DocumentName": "Sổ giao ban",
+        "Status": true
+    },
+    {
+        "DocumentName": "Sổ bàn giao kíp trực",
+        "Status": false
+    },
+    {
+        "DocumentName": "Sổ nhật ký trực ban",
+        "Status": true
+    },
+    {
+        "DocumentName": "Sổ nhật ký trực ban tác chiến",
+        "Status": true
+    }
+]
