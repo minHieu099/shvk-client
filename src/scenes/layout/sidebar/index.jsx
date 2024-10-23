@@ -18,8 +18,8 @@ import {
   TimelineOutlined,
   WavesOutlined,
 } from "@mui/icons-material";
-import avatar from "../../../assets/images/avatar.png";
-import logo from "../../../assets/images/logo.png";
+import avatar from "../../../assets/images/logo_t286.png";
+import logo from "../../../assets/images/logo_t286.png";
 import Item from "./item";
 import { ToggledContext } from "../../../App";
 
@@ -62,21 +62,23 @@ const SideBar = () => {
               <Box
                 display="flex"
                 alignItems="center"
+//                justifyContent="center"  // Căn giữa theo chiều ngang
                 gap="12px"
                 sx={{ transition: ".3s ease" }}
               >
-                <img
+                {/* <img
                   style={{ width: "30px", height: "30px", borderRadius: "8px" }}
                   src={logo}
                   alt="Argon"
-                />
+                /> */}
                 <Typography
-                  variant="h4"
+                  variant="h5"
                   fontWeight="bold"
                   textTransform="capitalize"
                   color={colors.greenAccent[500]}
+                  ml="24px"
                 >
-                  Argon
+                  Trung tâm 286
                 </Typography>
               </Box>
             )}
@@ -102,8 +104,12 @@ const SideBar = () => {
             sx={{ width: "100px", height: "100px" }}
           />
           <Box sx={{ textAlign: "center" }}>
-            <Typography variant="h3" fontWeight="bold" color={colors.gray[100]}>
-              Tony Stark
+            <Typography 
+            variant="h4" 
+            fontWeight="bold" 
+            color={colors.gray[100]}
+            textTransform="uppercase">
+              Số Hóa Văn Kiện
             </Typography>
             <Typography
               variant="h6"
