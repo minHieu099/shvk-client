@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Select, MenuItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, IconButton } from '@mui/material';
+import { Box, Select, MenuItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, IconButton, Button } from '@mui/material';
 import { Visibility, Edit, Delete } from '@mui/icons-material';
 import officersData from '../data/officers.json';
+import AddOfficerModal from './AddOfficerModal';
 
 function Team() {
   const [selectedGroup, setSelectedGroup] = useState('Tất cả');
   const [filteredOfficers, setFilteredOfficers] = useState(officersData);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (selectedGroup === 'Tất cả') {
@@ -16,6 +18,10 @@ function Team() {
       setFilteredOfficers(officersData.filter(officer => officer['Đơn vị'].includes(selectedGroup)));
     }
   }, [selectedGroup]);
+
+  const handleAddOfficer = (newOfficer) => {
+    setFilteredOfficers([...filteredOfficers, newOfficer]);
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -28,17 +34,22 @@ function Team() {
 
   return (
     <Box>
-      <Select
-        value={selectedGroup}
-        onChange={(e) => setSelectedGroup(e.target.value)}
-        displayEmpty
-      >
-        <MenuItem value="Tất cả">Tất cả</MenuItem>
-        <MenuItem value="Cụm 21">Cụm 21</MenuItem>
-        <MenuItem value="Cụm 22">Cụm 22</MenuItem>
-        <MenuItem value="Cụm 23">Cụm 23</MenuItem>
-      </Select>
-
+      <Box display="flex" justifyContent="space-between" mb={2}>
+        <Select
+          value={selectedGroup}
+          onChange={(e) => setSelectedGroup(e.target.value)}
+          displayEmpty
+        >
+          <MenuItem value="Tất cả">Tất cả</MenuItem>
+          <MenuItem value="Cụm 21">Cụm 21</MenuItem>
+          <MenuItem value="Cụm 22">Cụm 22</MenuItem>
+          <MenuItem value="Cụm 23">Cụm 23</MenuItem>
+        </Select>
+        <Button variant="contained" color="primary" onClick={() => setIsModalOpen(true)}>
+          Thêm cán bộ
+        </Button>
+      </Box>
+      <AddOfficerModal open={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddOfficer} />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
