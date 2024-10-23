@@ -52,17 +52,11 @@ function Team() {
     </Select>
 
     <Button
+      className="create-new-btn"
       variant="contained"
       style={{
-        backgroundColor: 'green',   // Màu xanh lá cây
-        color: 'white',             // Chữ trắng
         width: '10%',               // Độ rộng button
         marginRight: '1%',          // Cách lề phải 3%
-//        padding: '6px',             // Padding để tạo chiều cao hơn chữ 6px
-        display: 'flex',            // Sử dụng flexbox để căn giữa chữ
-        justifyContent: 'center',   // Căn giữa chữ theo chiều ngang
-        alignItems: 'center',       // Căn giữa chữ theo chiều dọc
-        height: '42px',
       }}
       onClick={() => setIsModalOpen(true)}
     >
@@ -76,21 +70,21 @@ function Team() {
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Họ tên</TableCell>
-          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Cấp bậc</TableCell>
-          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Đơn vị</TableCell>
-          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Chức vụ</TableCell>
-          <TableCell style={{ fontWeight: 'bold', backgroundColor: '#1976d2', color: 'white', textAlign: 'center' }}>Chức năng</TableCell>
+          <TableCell>Họ tên</TableCell>
+          <TableCell>Cấp bậc</TableCell>
+          <TableCell>Đơn vị</TableCell>
+          <TableCell>Chức vụ</TableCell>
+          <TableCell>Chức năng</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {filteredOfficers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((officer, index) => (
           <TableRow key={index}>
-            <TableCell style={{ textAlign: 'center' }}>{officer['Họ tên']}</TableCell>
-            <TableCell style={{ textAlign: 'center' }}>{officer['Cấp bậc']}</TableCell>
-            <TableCell style={{ textAlign: 'center' }}>{officer['Đơn vị']}</TableCell>
-            <TableCell style={{ textAlign: 'center' }}>{officer['Chức vụ']}</TableCell>
-            <TableCell style={{ textAlign: 'center' }}>
+            <TableCell>{officer['Họ tên']}</TableCell>
+            <TableCell>{officer['Cấp bậc']}</TableCell>
+            <TableCell>{officer['Đơn vị']}</TableCell>
+            <TableCell>{officer['Chức vụ']}</TableCell>
+            <TableCell>
               <IconButton><Visibility /></IconButton>
               <IconButton><Edit /></IconButton>
               <IconButton><Delete /></IconButton>

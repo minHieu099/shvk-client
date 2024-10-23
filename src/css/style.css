@@ -1,0 +1,47 @@
+/* Áp dụng cho tất cả các bảng */
+table {
+    width: 80%;              /* Độ rộng bảng 80% */
+    /* margin: 0 3%;            Cách lề trái và phải 3% */
+    border-collapse: collapse; /* Đảm bảo không có khoảng cách giữa các ô */
+  }
+  
+  /* Header của bảng */
+  table thead th {
+    font-weight: bold!important;
+    background-color: #1976d2; /* Màu xanh dương cho header */
+    color: white!important;              /* Chữ trắng trong header */
+    text-align: center!important;        /* Căn giữa nội dung trong header */
+
+  }
+  
+  /* Các ô trong body của bảng */
+  table tbody td {
+    text-align: center!important;        /* Căn giữa nội dung trong các ô */
+    border: 1px solid #ddd;    /* Đường viền nhạt giữa các ô */
+  }
+  
+  /* Căn giữa các biểu tượng trong các ô có chứa Icon */
+  table tbody td button, 
+  table tbody td svg {
+    vertical-align: middle;
+  }
+  
+  /* Button Tạo mới/Thêm mới */
+  button.create-new-btn {
+    background-color: green;      /* Màu xanh lá cây */
+    color: white;                 /* Màu chữ trắng */
+    width: 10%;                   /* Độ rộng khoảng 10% */
+    /* margin-right: 3%;             Cách lề phải 3% */
+    padding: 6px;                 /* Độ cao hơn chữ 6px */
+    display: flex;                /* Sử dụng flex để căn giữa */
+    justify-content: center;      /* Căn giữa theo chiều ngang */
+    align-items: center;          /* Căn giữa theo chiều dọc */
+    float: right!important;                 /* Đảm bảo nằm bên phải */
+    height: 42px;
+  }
+  
+  /* Hover effect cho button */
+  .create-new-btn:hover {
+    background-color: darkgreen;  /* Màu xanh đậm hơn khi hover */
+  }
+  

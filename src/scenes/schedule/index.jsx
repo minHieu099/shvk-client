@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, IconButton } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, IconButton, Button } from '@mui/material';
 import { Visibility, Edit, Delete } from '@mui/icons-material';
 import dutyScheduleData from '../data/duty_schedule.json';
 
 const ScheduleManagement = () => {
+  const [selectedGroup, setSelectedGroup] = useState('Tất cả');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -18,6 +20,19 @@ const ScheduleManagement = () => {
 
   return (
     <Box>
+      <Box display="flex" justifyContent="flex-end" mb={2}>
+
+    <Button
+      className="create-new-btn"
+      variant="contained"
+      style={{
+        width: '15%',               // Độ rộng button
+      }}
+      onClick={() => setIsModalOpen(true)}
+    >
+      Tạo mới lịch trực
+    </Button>
+  </Box>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
