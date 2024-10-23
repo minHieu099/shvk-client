@@ -1,0 +1,86 @@
+[
+    {
+        "Họ tên": "Nguyễn Văn A",
+        "Cấp bậc": "Đại tá",
+        "Đơn vị": "BTL 86",
+        "Chức vụ": "Chỉ huy trưởng"
+    },
+    {
+        "Họ tên": "Trần Thị B",
+        "Cấp bậc": "Thượng tá",
+        "Đơn vị": "Phòng tham mưu",
+        "Chức vụ": "Phó chỉ huy"
+    },
+    {
+        "Họ tên": "Phạm Văn C",
+        "Cấp bậc": "Trung tá",
+        "Đơn vị": "Đội 1 Cụm 21",
+        "Chức vụ": "Đội trưởng"
+    },
+    {
+        "Họ tên": "Lê Văn D",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Đội 2 Cụm 21",
+        "Chức vụ": "Phó đội trưởng"
+    },
+    {
+        "Họ tên": "Ngô Thị E",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 3 Cụm 21",
+        "Chức vụ": "Nhân viên"
+    },
+    {
+        "Họ tên": "Hoàng Văn F",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Đội 4 Cụm 21",
+        "Chức vụ": "Nhân viên"
+    },
+    {
+        "Họ tên": "Đỗ Văn G",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Đội 5 Cụm 22",
+        "Chức vụ": "Đội trưởng"
+    },
+    {
+        "Họ tên": "Phạm Thị H",
+        "Cấp bậc": "Thượng úy",
+        "Đơn vị": "Đội 6 Cụm 22",
+        "Chức vụ": "Phó đội trưởng"
+    },
+    {
+        "Họ tên": "Vũ Văn K",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 7 Cụm 22",
+        "Chức vụ": "Nhân viên"
+    },
+    {
+        "Họ tên": "Trần Văn L",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Đội 8 Cụm 22",
+        "Chức vụ": "Nhân viên"
+    },
+    {
+        "Họ tên": "Nguyễn Văn M",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Đội 9 Cụm 23",
+        "Chức vụ": "Đội trưởng"
+    },
+    {
+        "Họ tên": "Bùi Thị N",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 10 Cụm 23",
+        "Chức vụ": "Phó đội trưởng"
+    },
+    {
+        "Họ tên": "Nguyễn Văn O",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Đội 11 Cụm 23",
+        "Chức vụ": "Nhân viên"
+    },
+    {
+        "Họ tên": "Đặng Văn P",
+        "Cấp bậc": "Thượng úy",
+        "Đơn vị": "Đội 12 Cụm 23",
+        "Chức vụ": "Nhân viên"
+    }
+]

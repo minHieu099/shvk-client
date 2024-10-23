@@ -136,7 +136,7 @@ const SideBar = () => {
         >
           <Item
             title="Dashboard"
-            path="/"
+            path="/dashboard"
             colors={colors}
             icon={<DashboardOutlined />}
           />
@@ -146,44 +146,7 @@ const SideBar = () => {
           color={colors.gray[300]}
           sx={{ m: "15px 0 5px 20px" }}
         >
-          {!collapsed ? "Data" : " "}
-        </Typography>{" "}
-        <Menu
-          menuItemStyles={{
-            button: {
-              ":hover": {
-                color: "#868dfb",
-                background: "transparent",
-                transition: ".4s ease",
-              },
-            },
-          }}
-        >
-          <Item
-            title="Manage Team"
-            path="/team"
-            colors={colors}
-            icon={<PeopleAltOutlined />}
-          />
-          <Item
-            title="Contacts Information"
-            path="/contacts"
-            colors={colors}
-            icon={<ContactsOutlined />}
-          />
-          <Item
-            title="Invoices Balances"
-            path="/invoices"
-            colors={colors}
-            icon={<ReceiptOutlined />}
-          />
-        </Menu>
-        <Typography
-          variant="h6"
-          color={colors.gray[300]}
-          sx={{ m: "15px 0 5px 20px" }}
-        >
-          {!collapsed ? "Pages" : " "}
+          {!collapsed ? "Tham mưu" : " "}
         </Typography>
         <Menu
           menuItemStyles={{
@@ -197,22 +160,16 @@ const SideBar = () => {
           }}
         >
           <Item
-            title="Profile Form"
-            path="/form"
+            title="Quản lý cán bộ"
+            path="/team"
             colors={colors}
-            icon={<PersonOutlined />}
+            icon={<PeopleAltOutlined />}
           />
           <Item
-            title="Calendar"
-            path="/calendar"
+            title="Quản lý lịch trực"
+            path="/schedule-management"
             colors={colors}
-            icon={<CalendarTodayOutlined />}
-          />
-          <Item
-            title="FAQ Page"
-            path="/faq"
-            colors={colors}
-            icon={<HelpOutlineOutlined />}
+            icon={<ContactsOutlined />}
           />
         </Menu>
         <Typography
@@ -220,7 +177,38 @@ const SideBar = () => {
           color={colors.gray[300]}
           sx={{ m: "15px 0 5px 20px" }}
         >
-          {!collapsed ? "Charts" : " "}
+          {!collapsed ? "Trực chỉ huy" : " "}
+        </Typography>
+        <Menu
+          menuItemStyles={{
+            button: {
+              ":hover": {
+                color: "#868dfb",
+                background: "transparent",
+                transition: ".4s ease",
+              },
+            },
+          }}
+        >
+          <Item
+            title="Giao ban trực tuyến"
+            path="/online-meeting"
+            colors={colors}
+            icon={<PersonOutlined />}
+          />
+          <Item
+            title="Bàn giao trực chỉ huy"
+            path="/handover"
+            colors={colors}
+            icon={<CalendarTodayOutlined />}
+          />
+        </Menu>
+        <Typography
+          variant="h6"
+          color={colors.gray[300]}
+          sx={{ m: "15px 0 5px 20px" }}
+        >
+          {!collapsed ? "Trực ban tác chiến" : " "}
         </Typography>
         <Menu
           menuItemStyles={{
