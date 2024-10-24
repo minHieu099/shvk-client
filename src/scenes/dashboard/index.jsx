@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Card, CardContent, Typography, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from '@mui/material';
 import { FaUser, FaFileAlt, FaTasks, FaBuilding } from 'react-icons/fa';
 import dutyScheduleData from '../data/duty_schedule.json';
 import documentMixedData from '../data/document_mixed.json';
@@ -17,47 +17,66 @@ function Dashboard() {
     <div>
       <Grid container spacing={3} style={{ marginBottom: '20px' }}>
         <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <FaUser size={30} />
-              <Typography variant="h6">Thành viên quản lý: {members}</Typography>
+          <Card className="grid-card bg-green"> {/* Green card */}
+            <CardContent className="card-content">
+              <Typography variant="h6" className="title">Thành viên</Typography>
+              <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>
+                {members}
+              </Typography>
+              {/* <Typography variant="body2" style={{ color: '#fff' }}>Last Month</Typography> */}
             </CardContent>
+            <Box className="icon-box icon-green"> {/* Icon moved to the right */}
+              <FaUser size={30} color="white" />
+            </Box>
           </Card>
         </Grid>
+
         <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <FaFileAlt size={30} />
-              <Typography variant="h6">Văn bản quản lý: {documents}</Typography>
+          <Card className="grid-card bg-purple"> {/* Another green card */}
+            <CardContent className="card-content">
+              <Typography variant="h6" className="title">Văn bản</Typography>
+              <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>{documents}</Typography>
             </CardContent>
+            <Box className="icon-box icon-purple">
+              <FaFileAlt size={24} color="white" />
+            </Box>
           </Card>
         </Grid>
+
         <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <FaTasks size={30} />
-              <Typography variant="h6">Tổng số nhiệm vụ: {tasks}</Typography>
+          <Card className="grid-card bg-blue"> {/* Red card */}
+            <CardContent className="card-content">
+              <Typography variant="h6" className="title">Nhiệm vụ</Typography>
+              <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>{tasks}</Typography>
             </CardContent>
+            <Box className="icon-box icon-blue">
+              <FaTasks size={24} color="white" />
+            </Box>
           </Card>
         </Grid>
+
         <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <FaBuilding size={30} />
-              <Typography variant="h6">Đơn vị trực thuộc: {agencies}</Typography>
+          <Card className="grid-card bg-yellow"> {/* Blue card */}
+            <CardContent className="card-content">
+              <Typography variant="h6" className="title">Đơn vị</Typography>
+              <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>{agencies}</Typography>
             </CardContent>
+            <Box className="icon-box icon-yellow">
+              <FaBuilding size={24} color="white" />
+            </Box>
           </Card>
         </Grid>
       </Grid>
 
+
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <Typography variant="h6">Danh sách trực ngày 24/10/2024</Typography>
+          <Typography variant="h6" className='title-table'>Danh sách trực ngày 24/10/2024</Typography>
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Vị trí trực</TableCell>
+                  <TableCell>Thành phần</TableCell>
                   <TableCell>Tên người trực</TableCell>
                 </TableRow>
               </TableHead>
@@ -76,7 +95,7 @@ function Dashboard() {
         </Grid>
 
         <Grid item xs={6}>
-          <Typography variant="h6">Sổ sách văn kiện</Typography>
+          <Typography variant="h6" className='title-table'>Sổ sách văn kiện</Typography>
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
