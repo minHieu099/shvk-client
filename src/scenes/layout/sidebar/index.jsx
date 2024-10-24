@@ -212,7 +212,7 @@ const SideBar = () => {
           color={colors.gray[300]}
           sx={{ m: "15px 0 5px 20px" }}
         >
-          {!collapsed ? "Trực ban tác chiến" : " "}
+          {!collapsed ? "Trực ban các cụm" : " "}
         </Typography>
         <Menu
           menuItemStyles={{

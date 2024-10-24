@@ -5,6 +5,7 @@ import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/team";
 import Login from "./scenes/login";
 import ScheduleManagement from "./scenes/schedule";
+import OnlineMeeting from "./scenes/onlinemeeting";
 import { UserProvider } from './UserContext';
 const AppRouter = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -18,6 +19,7 @@ const AppRouter = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/team" element={<Team />} />
             <Route path="/schedule-management" element={<ScheduleManagement />} />
+            <Route path="/online-meeting" element={<OnlineMeeting />} />
           </Route>
         </Routes>
       </Router>

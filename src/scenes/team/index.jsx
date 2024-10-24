@@ -40,8 +40,8 @@ function Team() {
       onChange={(e) => setSelectedGroup(e.target.value)}
       displayEmpty
       style={{
-        width: '8%',         // Độ rộng của select
-        marginLeft: '1%',     // Cách lề trái 3%
+        width: '8%',        
+        marginLeft: '1%',     
         height: '42px',
       }}
     >
