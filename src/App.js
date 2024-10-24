@@ -1,4 +1,5 @@
 import './css/style.css';
+import './css/dashboard.css';
 import React, { createContext, useState } from "react";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { Outlet } from "react-router-dom";

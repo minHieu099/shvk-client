@@ -44,4 +44,25 @@ table {
   .create-new-btn:hover {
     background-color: darkgreen;  /* Màu xanh đậm hơn khi hover */
   }
+
+  card.dashbroad{
+    position: relative; 
+    padding: 10px;
+    display: flex!important; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1)
+  }
   
+  box.dashbroad {
+    /* background-color: #FFA726; */
+    position: absolute;
+    top: 15px;  
+    left: 15px;
+    width: 85px;
+    height: 85px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
