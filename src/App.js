@@ -16,19 +16,17 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <ToggledContext.Provider value={values}>
-        <Box sx={{ display: "flex", height: "100vh", maxWidth: "100%" }}>
-  <Box sx={{ width: '18%' }}>  {/* Set sidebar width to 18% */}
-    <SideBar />
-  </Box>
-  <Box
-    sx={{
-      overflowY: "auto",
-      flex: 1,
-      maxWidth: "82%",  // Remaining width for content
-      marginLeft: '3%',
-      marginRight: '3%',
-    }}
-  >
+          <Box sx={{ display: "flex", height: "100vh", maxWidth: "100%" }}>
+            <SideBar />
+            <Box
+              sx={{
+                overflowY: "auto",
+                flex: 1,
+                maxWidth: "100%",
+                marginLeft: '3%',   // Cách lề trái 3%
+                marginRight: '3%',  // Cách lề phải 3%
+              }}
+            >
               <Navbar />
               <Box sx={{ overflowY: "auto", flex: 1, maxWidth: "100%" }}>
                 <Outlet />
