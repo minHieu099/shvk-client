@@ -1,86 +1,291 @@
 [
     {
-        "Họ tên": "Nguyễn Văn A",
+        "Họ tên": "Trần Ngọc Anh",
         "Cấp bậc": "Đại tá",
-        "Đơn vị": "BTL 86",
+        "Đơn vị": "Chỉ huy Trung tâm",
         "Chức vụ": "Chỉ huy trưởng"
     },
     {
-        "Họ tên": "Trần Thị B",
+        "Họ tên": "Nguyễn Quốc Hoàn",
         "Cấp bậc": "Thượng tá",
-        "Đơn vị": "Phòng tham mưu",
-        "Chức vụ": "Phó chỉ huy"
+        "Đơn vị": "Chỉ huy Trung tâm",
+        "Chức vụ": "Chính ủy"
     },
     {
-        "Họ tên": "Phạm Văn C",
+        "Họ tên": "Nguyễn Ngọc Huy",
+        "Cấp bậc": "Thượng tá",
+        "Đơn vị": "Chỉ huy Trung tâm",
+        "Chức vụ": "Phó chỉ huy trưởng - Tham mưu trưởng"
+    },
+    {
+        "Họ tên": "Hoàng Thế Triều",
+        "Cấp bậc": "Thượng tá",
+        "Đơn vị": "Chỉ huy Trung tâm",
+        "Chức vụ": "Phó chỉ huy trưởng"
+    },
+    {
+        "Họ tên": "Đặng Quốc Cường",
+        "Cấp bậc": "Đại tá",
+        "Đơn vị": "Chỉ huy Trung tâm",
+        "Chức vụ": "Phó chỉ huy trưởng"
+    },
+    {
+        "Họ tên": "Lê Anh Dũng",
+        "Cấp bậc": "Thượng tá",
+        "Đơn vị": "Chỉ huy Trung tâm",
+        "Chức vụ": "Phó Chính ủy"
+    },
+    {
+        "Họ tên": "Đỗ Thành Nam",
+        "Cấp bậc": "TTrung tá",
+        "Đơn vị": "Phòng Tham mưu",
+        "Chức vụ": "Phó Tham mưu trưởng"
+    },
+    {
+        "Họ tên": "Phan Tấn Toàn",
+        "Cấp bậc": "TTrung tá",
+        "Đơn vị": "Phòng Tham mưu",
+        "Chức vụ": "Phó Tham mưu trưởng"
+    },
+    {
+        "Họ tên": "Đinh Văn Tài",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Phòng Tham mưu",
+        "Chức vụ": "Trợ lý tác chiến thông tin"
+    },
+    {
+        "Họ tên": "Phạm Tuấn Nghĩa",
+        "Cấp bậc": "Đại úy CN",
+        "Đơn vị": "Phòng Tham mưu",
+        "Chức vụ": "Nhân viên Bản đồ"
+    },
+    {
+        "Họ tên": "Bùi Đức Mạnh",
+        "Cấp bậc": "Thiếu úy",
+        "Đơn vị": "Phòng Tham mưu",
+        "Chức vụ": "Trợ lý Quân lực"
+    },
+    {
+        "Họ tên": "Lê Đăng Minh",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Phòng Chính trị",
+        "Chức vụ": "Trợ lý chính trị"
+    },
+    {
+        "Họ tên": "Trần Thái Hoàng Anh",
+        "Cấp bậc": "Đại úy CN",
+        "Đơn vị": "Phòng Chính trị",
+        "Chức vụ": "Nhân viên thống kê, văn hóa cơ sở"
+    },
+    {
+        "Họ tên": "Võ Thái Hưng",
         "Cấp bậc": "Trung tá",
+        "Đơn vị": "Phòng Hậu cần - Kỹ thuật",
+        "Chức vụ": "Trưởng phòng"
+    },
+    {
+        "Họ tên": "Lê Anh Tuấn",
+        "Cấp bậc": "Trung tá",
+        "Đơn vị": "Phòng Hậu cần - Kỹ thuật",
+        "Chức vụ": "Phó trưởng phòng"
+    },
+    {
+        "Họ tên": "Nguyễn Duy Yên",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Phòng Hậu cần - Kỹ thuật",
+        "Chức vụ": "Trợ lý Doanh trại"
+    },
+    {
+        "Họ tên": "Hoàng Khánh Dương",
+        "Cấp bậc": "Thiếu tá CN",
+        "Đơn vị": "Phòng Hậu cần - Kỹ thuật",
+        "Chức vụ": "Nhân viên"
+    },
+    {
+        "Họ tên": "Nguyễn Khái Quốc",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Ban Tài chính",
+        "Chức vụ": "Trưởng ban"
+    },
+    {
+        "Họ tên": "Hồ Thị Khánh Ly",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Ban Tài chính",
+        "Chức vụ": "Trợ lý Tài chính"
+    },
+    {
+        "Họ tên": "Đặng Bá Thuận",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Cụm 21",
+        "Chức vụ": "Cụm trưởng"
+    },
+    {
+        "Họ tên": "Phạm Quang Tuyển",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Cụm 21",
+        "Chức vụ": "Chính trị vien phó"
+    },
+    {
+        "Họ tên": "Nguyễn Trương Dăng Lân",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Cụm 21",
+        "Chức vụ": "Phó Cụm trưởng"
+    },
+    {
+        "Họ tên": "Phạm Công Tú",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Cụm 21",
+        "Chức vụ": "Trợ lý Tham mưu"
+    },
+    {
+        "Họ tên": "Hồ Sỹ Việt",
+        "Cấp bậc": "Đại úy",
         "Đơn vị": "Đội 1 Cụm 21",
         "Chức vụ": "Đội trưởng"
     },
     {
-        "Họ tên": "Lê Văn D",
-        "Cấp bậc": "Thiếu tá",
-        "Đơn vị": "Đội 2 Cụm 21",
-        "Chức vụ": "Phó đội trưởng"
+        "Họ tên": "Lê Thị Trang",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 1 Cụm 21",
+        "Chức vụ": "Dội phó"
     },
     {
-        "Họ tên": "Ngô Thị E",
+        "Họ tên": "Nguyễn Duy Nguyên",
+        "Cấp bậc": "Thiếu úy",
+        "Đơn vị": "Đội 1 Cụm 21",
+        "Chức vụ": "Sỹ quan Tác chiến mạng"
+    },
+    {
+        "Họ tên": "Phạm Xuân Hòa",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 2 Cụm 21",
+        "Chức vụ": "Đội trưởng"
+    },
+    {
+        "Họ tên": "Trần Xuân Công",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Đội 2 Cụm 21",
+        "Chức vụ": "Sỹ quan Tác chiến mạng"
+    },
+    {
+        "Họ tên": "Lê Đình Khánh",
         "Cấp bậc": "Đại úy",
         "Đơn vị": "Đội 3 Cụm 21",
-        "Chức vụ": "Nhân viên"
+        "Chức vụ": "Đội phó"
     },
     {
-        "Họ tên": "Hoàng Văn F",
-        "Cấp bậc": "Trung úy",
-        "Đơn vị": "Đội 4 Cụm 21",
-        "Chức vụ": "Nhân viên"
+        "Họ tên": "Hoàng Thị Thủy",
+        "Cấp bậc": "Thượng úy",
+        "Đơn vị": "Đội 3 Cụm 21",
+        "Chức vụ": "Sỹ quan Tác chiến mạng"
     },
     {
-        "Họ tên": "Đỗ Văn G",
+        "Họ tên": "Nguyễn Quang Bình",
         "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Cụm 22",
+        "Chức vụ": "Cụm trưởng"
+    },
+    {
+        "Họ tên": "Phạm Hồng Việt",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Cụm 22",
+        "Chức vụ": "Chính trị viên"
+    },
+    {
+        "Họ tên": "Nguyễn Hồng Giang",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Cụm 22",
+        "Chức vụ": "Phó Cụm trưởng"
+    },
+    {
+        "Họ tên": "Lê Hoàng Anh",
+        "Cấp bậc": "Thiếu úy",
+        "Đơn vị": "Cụm 22",
+        "Chức vụ": "Trợ lý Tham mưu"
+    },
+    {
+        "Họ tên": "Nguyễn Duy Việt",
+        "Cấp bậc": "Thượng úy",
         "Đơn vị": "Đội 5 Cụm 22",
         "Chức vụ": "Đội trưởng"
     },
     {
-        "Họ tên": "Phạm Thị H",
-        "Cấp bậc": "Thượng úy",
-        "Đơn vị": "Đội 6 Cụm 22",
-        "Chức vụ": "Phó đội trưởng"
-    },
-    {
-        "Họ tên": "Vũ Văn K",
-        "Cấp bậc": "Đại úy",
-        "Đơn vị": "Đội 7 Cụm 22",
-        "Chức vụ": "Nhân viên"
-    },
-    {
-        "Họ tên": "Trần Văn L",
+        "Họ tên": "Võ Minh Khải",
         "Cấp bậc": "Trung úy",
-        "Đơn vị": "Đội 8 Cụm 22",
-        "Chức vụ": "Nhân viên"
+        "Đơn vị": "Đội 5 Cụm 22",
+        "Chức vụ": "Sỹ quan Tác chiến thồn tin"
     },
     {
-        "Họ tên": "Nguyễn Văn M",
-        "Cấp bậc": "Thiếu tá",
-        "Đơn vị": "Đội 9 Cụm 23",
+        "Họ tên": "Nguyễn Trọng Phương",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 6 Cụm 22",
         "Chức vụ": "Đội trưởng"
     },
     {
-        "Họ tên": "Bùi Thị N",
+        "Họ tên": "Nguyễn Minh Hiếu",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Đội 6 Cụm 22",
+        "Chức vụ": "Sỹ quan Tác chiến thông tin"
+    },
+    {
+        "Họ tên": "Cao Dắc Trung",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Cụm 23",
+        "Chức vụ": "Cụm trưởng"
+    },
+    {
+        "Họ tên": "Lưu Văn Tuyên",
+        "Cấp bậc": "Trung tá",
+        "Đơn vị": "Cụm 23",
+        "Chức vụ": "Chính trị viên"
+    },
+    {
+        "Họ tên": "Vũ Quỳnh Sơn",
+        "Cấp bậc": "Thiếu tá",
+        "Đơn vị": "Cụm 23",
+        "Chức vụ": "Phó Cụm trưởng"
+    },
+    {
+        "Họ tên": "Vũ Thành Luân",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Cụm 23",
+        "Chức vụ": "Trợ lý"
+    },
+    {
+        "Họ tên": "Nguyễn Hồng Quân",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 9 Cụm 23",
+        "Chức vụ": "Đội phó"
+    },
+    {
+        "Họ tên": "Nguyễn Tiến Đạt",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Đội 9 Cụm 23",
+        "Chức vụ": "Sỹ quan Công nghệ thông tin"
+    },
+    {
+        "Họ tên": "Lê Huỳnh",
         "Cấp bậc": "Đại úy",
         "Đơn vị": "Đội 10 Cụm 23",
-        "Chức vụ": "Phó đội trưởng"
+        "Chức vụ": "Đội trưởng"
     },
     {
-        "Họ tên": "Nguyễn Văn O",
+        "Họ tên": "Võ Huy Hoàng",
+        "Cấp bậc": "Trung úy",
+        "Đơn vị": "Đội 10 Cụm 23",
+        "Chức vụ": "Sỹ quan Công nghệ thông tin"
+    },
+    {
+        "Họ tên": "Biện Anh Tuấn",
+        "Cấp bậc": "Đại úy",
+        "Đơn vị": "Đội 11 Cụm 23",
+        "Chức vụ": "Đội trưởng"
+    },
+    {
+        "Họ tên": "Lê Minh Giang",
         "Cấp bậc": "Trung úy",
         "Đơn vị": "Đội 11 Cụm 23",
-        "Chức vụ": "Nhân viên"
-    },
-    {
-        "Họ tên": "Đặng Văn P",
-        "Cấp bậc": "Thượng úy",
-        "Đơn vị": "Đội 12 Cụm 23",
-        "Chức vụ": "Nhân viên"
+        "Chức vụ": "Sỹ quan Công nghệ thông tin"
     }
+
 ]

@@ -5,10 +5,10 @@ import dutyScheduleData from '../data/duty_schedule.json';
 import documentMixedData from '../data/document_mixed.json';
 
 function Dashboard() {
-  const members = 100; 
-  const documents = 50; 
+  const members = 159; 
+  const documents = 10; 
   const tasks = 75; 
-  const agencies = 10; 
+  const agencies = 7; 
 
   // Filter the data for the specific date
   const dutyForSpecificDate = dutyScheduleData.find(duty => duty['Ngày'] === '24/10/2024');
@@ -19,7 +19,7 @@ function Dashboard() {
         <Grid item xs={3}>
           <Card className="grid-card bg-green"> {/* Green card */}
             <CardContent className="card-content">
-              <Typography variant="h6" className="title">Thành viên</Typography>
+              <Typography variant="h6" className="title">Tổng quân số</Typography>
               <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>
                 {members}
               </Typography>
