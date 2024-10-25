@@ -34,10 +34,9 @@ const SideBar = () => {
       rootStyles={{
         border: 0,
         height: "100%",
-
       }}
       sx={{
-        overflowY: "hidden", // Ẩn thanh 
+        overflowY: "hidden", // Ẩn thanh
       }}
       collapsed={collapsed}
       onBackdropClick={() => setToggled(false)}
@@ -66,7 +65,7 @@ const SideBar = () => {
               <Box
                 display="flex"
                 alignItems="center"
-//                justifyContent="center"  // Căn giữa theo chiều ngang
+                //                justifyContent="center"  // Căn giữa theo chiều ngang
                 gap="12px"
                 sx={{ transition: ".3s ease" }}
               >
@@ -108,11 +107,12 @@ const SideBar = () => {
             sx={{ width: "100px", height: "100px" }}
           />
           <Box sx={{ textAlign: "center" }}>
-            <Typography 
-            variant="h4" 
-            fontWeight="bold" 
-            color={colors.gray[100]}
-            textTransform="uppercase">
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              color={colors.gray[100]}
+              textTransform="uppercase"
+            >
               Số Hóa Văn Kiện
             </Typography>
             <Typography
@@ -195,16 +195,16 @@ const SideBar = () => {
           }}
         >
           <Item
-            title="Giao ban trực tuyến"
-            path="/online-meeting"
-            colors={colors}
-            icon={<PersonOutlined />}
-          />
-          <Item
             title="Bàn giao trực chỉ huy"
             path="/handover"
             colors={colors}
             icon={<CalendarTodayOutlined />}
+          />
+          <Item
+            title="Giao ban trực tuyến"
+            path="/online-meeting"
+            colors={colors}
+            icon={<PersonOutlined />}
           />
         </Menu>
         <Typography

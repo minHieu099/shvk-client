@@ -12,10 +12,11 @@ import Pie from "./pie";
 import Stream from "./stream";
 import FAQ from "./faq";
 import Geography from "./geography";
-
+import Handover from "./handover";
 export {
   Navbar,
   SideBar,
   Dashboard,
   Team,
+  Handover,
 };
