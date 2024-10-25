@@ -12,7 +12,11 @@ const Login = ({ setAuthenticated }) => {
 
   const handleLogin = () => {
     // Simulate authentication
-    if (username === 'user' && password === 'password') {
+    if (
+      (username === 'user' && password === '1') ||
+      (username === 'tbtc1' && password === '1') ||
+      (username === 'tbtc2' && password === '1')
+    ) {
       setAuthenticated(true);
       setUser({ username }); 
       navigate('/dashboard');

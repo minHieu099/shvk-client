@@ -29,6 +29,9 @@ const Handover = () => {
     setSelectedData(null);
   };
 
+  const today = new Date();
+  const todayFormatted = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`; // Format today's date as 'DD/MM/YYYY'
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -38,30 +41,28 @@ const Handover = () => {
               <TableCell>Thời gian</TableCell>
               <TableCell>Trực chỉ huy</TableCell>
               <TableCell>Trực ban trưởng cũ</TableCell>
-              <TableCell>Trực ban phó cũ</TableCell>
               <TableCell>Trực ban trưởng mới</TableCell>
-              <TableCell>Trực ban phó mới</TableCell>
               <TableCell>Hành động</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {handOverData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => (
-              <TableRow key={index}>
-                <TableCell>{data.thoigian}</TableCell>
-                <TableCell>{data.truc_CH}</TableCell>
-                <TableCell>{data.truc_ban_cu_1}</TableCell>
-                <TableCell>{data.truc_ban_cu_2}</TableCell>
-                <TableCell>{data.truc_ban_moi_1}</TableCell>
-                <TableCell>{data.truc_ban_moi_2}</TableCell>
-                <TableCell>
-                  <IconButton onClick={() => handleOpen(data)}><Visibility /></IconButton>
-                  <IconButton><Description /></IconButton>
-                  <IconButton><Edit /></IconButton>
-                  <IconButton><Delete /></IconButton>
-                  <IconButton><CheckCircle /></IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
+            {handOverData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+              const isToday = data.thoigian === todayFormatted; // Check if the date matches today
+              return (
+                <TableRow key={index} style={{ backgroundColor: isToday ? '#f0f8ff' : 'inherit' }}>
+                  <TableCell>{data.thoigian}</TableCell>
+                  <TableCell>{data.truc_CH}</TableCell>
+                  <TableCell>{data.truc_ban_cu_1}</TableCell>
+                  <TableCell>{data.truc_ban_moi_1}</TableCell>
+                  <TableCell>
+                    <IconButton onClick={() => handleOpen(data)}><Visibility /></IconButton>
+                    <IconButton><Edit /></IconButton>
+                    <IconButton><Delete /></IconButton>
+                    <IconButton><CheckCircle /></IconButton>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
         <TablePagination
