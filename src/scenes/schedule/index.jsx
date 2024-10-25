@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, IconButton, Button } from '@mui/material';
 import { Visibility, Edit, Delete } from '@mui/icons-material';
 import dutyScheduleData from '../data/duty_schedule.json';
+import Tooltip from '@mui/material/Tooltip';
 
 const ScheduleManagement = () => {
   const [selectedGroup, setSelectedGroup] = useState('Tất cả');
@@ -56,9 +57,17 @@ const ScheduleManagement = () => {
                 <TableCell>{schedule['Trực ban tác chiến']}</TableCell>
                 <TableCell>{schedule['Trực chỉ huy']}</TableCell>
                 <TableCell>
-                  <IconButton><Visibility /></IconButton>
-                  <IconButton><Edit /></IconButton>
-                  <IconButton><Delete /></IconButton>
+                <Tooltip title="Xem chi tiết">
+                <IconButton><Visibility sx={{ color: '#6c6cd0f0' }} /></IconButton>
+              </Tooltip>
+            
+              <Tooltip title="Chỉnh sửa">
+                <IconButton><Edit sx={{ color: '#e8a90e' }} /></IconButton>
+              </Tooltip>
+            
+              <Tooltip title="Xóa">
+                <IconButton><Delete sx={{ color: '#f52c2cdb' }}/></IconButton>
+              </Tooltip>
                 </TableCell>
               </TableRow>
             ))}

@@ -12,7 +12,7 @@ table {
     background-color: #1976d2; /* Màu xanh dương cho header */
     color: white!important;              /* Chữ trắng trong header */
     text-align: center!important;        /* Căn giữa nội dung trong header */
-    font-size: 16px!important;
+    font-size: 15px!important;
 
   }
   
@@ -69,3 +69,6 @@ table {
     justify-content: center;
     align-items: center;
   }
+
+  /* Định nghĩa CSS để màu của tất cả các icon Delete là đỏ */
+

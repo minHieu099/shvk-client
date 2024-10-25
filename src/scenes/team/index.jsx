@@ -3,6 +3,7 @@ import { Box, Select, MenuItem, Table, TableBody, TableCell, TableContainer, Tab
 import { Visibility, Edit, Delete } from '@mui/icons-material';
 import officersData from '../data/officers.json';
 import AddOfficerModal from './AddOfficerModal';
+import Tooltip from '@mui/material/Tooltip';
 
 function Team() {
   const [selectedGroup, setSelectedGroup] = useState('Tất cả');
@@ -84,10 +85,23 @@ function Team() {
             <TableCell>{officer['Cấp bậc']}</TableCell>
             <TableCell>{officer['Đơn vị']}</TableCell>
             <TableCell>{officer['Chức vụ']}</TableCell>
-            <TableCell>
+            {/* <TableCell>
               <IconButton><Visibility /></IconButton>
               <IconButton><Edit /></IconButton>
               <IconButton><Delete /></IconButton>
+            </TableCell> */}
+            <TableCell>
+              <Tooltip title="Xem chi tiết">
+                <IconButton><Visibility sx={{ color: '#6c6cd0f0' }} /></IconButton>
+              </Tooltip>
+            
+              <Tooltip title="Chỉnh sửa">
+                <IconButton><Edit sx={{ color: '#e8a90e' }} /></IconButton>
+              </Tooltip>
+            
+              <Tooltip title="Xóa">
+                <IconButton><Delete sx={{ color: '#f52c2cdb' }}/></IconButton>
+              </Tooltip>
             </TableCell>
           </TableRow>
         ))}

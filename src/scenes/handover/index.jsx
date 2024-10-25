@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import { Visibility, Edit, Delete, CheckCircle, Description } from '@mui/icons-material';
 import handOverData from '../data/handOverData.json';
 import DetailDialog from './DetailDialog';
+import Tooltip from '@mui/material/Tooltip';
 
 const Handover = () => {
   const [page, setPage] = useState(0);
@@ -55,10 +56,22 @@ const Handover = () => {
                   <TableCell>{data.truc_ban_cu_1}</TableCell>
                   <TableCell>{data.truc_ban_moi_1}</TableCell>
                   <TableCell>
-                    <IconButton onClick={() => handleOpen(data)}><Visibility /></IconButton>
-                    <IconButton><Edit /></IconButton>
-                    <IconButton><Delete /></IconButton>
-                    <IconButton><CheckCircle /></IconButton>
+                    {/* <IconButton onClick={() => handleOpen(data)}><Visibility /></IconButton> */}
+                    <Tooltip title="Xem chi tiết">
+                <IconButton><Visibility sx={{ color: '#6c6cd0f0' }} onClick={() => handleOpen(data)} /></IconButton>
+              </Tooltip>
+            
+              <Tooltip title="Chỉnh sửa">
+                <IconButton><Edit sx={{ color: '#e8a90e' }} /></IconButton>
+              </Tooltip>
+            
+              <Tooltip title="Xóa">
+                <IconButton><Delete sx={{ color: '#f52c2cdb' }}/></IconButton>
+              </Tooltip>
+              <Tooltip title="Phê duyệt">
+                <IconButton><CheckCircle sx={{ color: '#3bc73b' }}/></IconButton>
+              </Tooltip>
+                    {/* <IconButton><CheckCircle /></IconButton> */}
                   </TableCell>
                 </TableRow>
               );
