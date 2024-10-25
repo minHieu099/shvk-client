@@ -148,7 +148,7 @@ const SideBar = () => {
         <Typography
           variant="h6"
           color={colors.gray[300]}
-          sx={{ m: "15px 0 5px 20px" }}
+          sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
         >
           {!collapsed ? "Tham mưu" : " "}
         </Typography>
@@ -179,7 +179,7 @@ const SideBar = () => {
         <Typography
           variant="h6"
           color={colors.gray[300]}
-          sx={{ m: "15px 0 5px 20px" }}
+          sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
         >
           {!collapsed ? "Trực chỉ huy" : " "}
         </Typography>
@@ -210,7 +210,7 @@ const SideBar = () => {
         <Typography
           variant="h6"
           color={colors.gray[300]}
-          sx={{ m: "15px 0 5px 20px" }}
+          sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
         >
           {!collapsed ? "Trực ban các cụm" : " "}
         </Typography>

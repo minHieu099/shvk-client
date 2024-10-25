@@ -3,6 +3,7 @@ table {
     width: 80%;              /* Độ rộng bảng 80% */
     /* margin: 0 3%;            Cách lề trái và phải 3% */
     border-collapse: collapse; /* Đảm bảo không có khoảng cách giữa các ô */
+    /* font-size: 16px; */
   }
   
   /* Header của bảng */
@@ -11,6 +12,7 @@ table {
     background-color: #1976d2; /* Màu xanh dương cho header */
     color: white!important;              /* Chữ trắng trong header */
     text-align: center!important;        /* Căn giữa nội dung trong header */
+    font-size: 16px!important;
 
   }
   
@@ -18,6 +20,7 @@ table {
   table tbody td {
     text-align: center!important;        /* Căn giữa nội dung trong các ô */
     border: 1px solid #ddd;    /* Đường viền nhạt giữa các ô */
+    font-size: 14px!important;
   }
   
   /* Căn giữa các biểu tượng trong các ô có chứa Icon */
