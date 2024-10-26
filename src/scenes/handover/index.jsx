@@ -5,10 +5,12 @@ import handOverData from '../data/handOverData.json';
 import DetailDialog from './DetailDialog';
 import Tooltip from '@mui/material/Tooltip';
 import EditModal from './EditModal';
-import renderGbnTT from "../../export/giaobanngayTT"; // Import the renderGbnTT function
-import { saveAs } from "file-saver"; // Import saveAs
-import { Packer } from "docx"; // Import Packer
-import ImageBased64 from "../data/ImageBased64"; // Import ImageBased64
+import renderGbnTT from "../../export/giaobanngayTT";
+import { saveAs } from "file-saver";
+import { Packer } from "docx";
+import ImageBased64 from "../data/ImageBased64";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Handover = () => {
   const [page, setPage] = useState(0);
@@ -52,6 +54,17 @@ const Handover = () => {
     setData(updatedDataList);
     console.log('Updated Data:', updatedDataList);
     setEditOpen(false);
+
+    // Hiển thị thông báo cập nhật thành công
+    toast.success("Cập nhật thành công!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const handleApprove = (data) => {
@@ -123,6 +136,7 @@ const Handover = () => {
 
       <DetailDialog open={open} onClose={handleClose} data={selectedData} />
       <EditModal open={editOpen} onClose={handleEditClose} data={selectedData} onSave={handleSave} />
+      <ToastContainer /> {/* Hiển thị ToastContainer để quản lý các thông báo */}
     </>
   );
 };
