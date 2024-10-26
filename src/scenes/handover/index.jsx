@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TablePagination } from "@mui/material";
-import { Visibility, Edit, Delete, CheckCircle, Description } from '@mui/icons-material';
+import { Visibility, Edit, Delete, CheckCircle } from '@mui/icons-material';
 import handOverData from '../data/handOverData.json';
 import DetailDialog from './DetailDialog';
 import Tooltip from '@mui/material/Tooltip';
+import EditModal from './EditModal';
+import renderGbnTT from "../../export/giaobanngayTT"; // Import the renderGbnTT function
+import { saveAs } from "file-saver"; // Import saveAs
+import { Packer } from "docx"; // Import Packer
+import ImageBased64 from "../data/ImageBased64"; // Import ImageBased64
 
 const Handover = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [open, setOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
+  const [data, setData] = useState(handOverData);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -25,13 +32,42 @@ const Handover = () => {
     setOpen(true);
   };
 
+  const handleEditOpen = (data) => {
+    setSelectedData(data);
+    setEditOpen(true);
+  };
+
   const handleClose = () => {
     setOpen(false);
     setSelectedData(null);
   };
 
+  const handleEditClose = () => {
+    setEditOpen(false);
+    setSelectedData(null);
+  };
+
+  const handleSave = (updatedData) => {
+    const updatedDataList = data.map(item => item.id === updatedData.id ? updatedData : item);
+    setData(updatedDataList);
+    console.log('Updated Data:', updatedDataList);
+    setEditOpen(false);
+  };
+
+  const handleApprove = (data) => {
+    const docData = {
+      ...data,
+      signatureImage: ImageBased64
+    };
+    const doc = renderGbnTT(docData);
+
+    Packer.toBlob(doc).then((blob) => {
+      saveAs(blob, `Giao ban ngày.docx`);
+    });
+  };
+
   const today = new Date();
-  const todayFormatted = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`; // Format today's date as 'DD/MM/YYYY'
+  const todayFormatted = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
 
   return (
     <>
@@ -47,8 +83,8 @@ const Handover = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {handOverData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
-              const isToday = data.thoigian === todayFormatted; // Check if the date matches today
+            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+              const isToday = data.thoigian === todayFormatted;
               return (
                 <TableRow key={index} style={{ backgroundColor: isToday ? '#f0f8ff' : 'inherit' }}>
                   <TableCell>{data.thoigian}</TableCell>
@@ -56,22 +92,18 @@ const Handover = () => {
                   <TableCell>{data.truc_ban_cu_1}</TableCell>
                   <TableCell>{data.truc_ban_moi_1}</TableCell>
                   <TableCell>
-                    {/* <IconButton onClick={() => handleOpen(data)}><Visibility /></IconButton> */}
                     <Tooltip title="Xem chi tiết">
-                <IconButton><Visibility sx={{ color: '#6c6cd0f0' }} onClick={() => handleOpen(data)} /></IconButton>
-              </Tooltip>
-            
-              <Tooltip title="Chỉnh sửa">
-                <IconButton><Edit sx={{ color: '#e8a90e' }} /></IconButton>
-              </Tooltip>
-            
-              <Tooltip title="Xóa">
-                <IconButton><Delete sx={{ color: '#f52c2cdb' }}/></IconButton>
-              </Tooltip>
-              <Tooltip title="Phê duyệt">
-                <IconButton><CheckCircle sx={{ color: '#3bc73b' }}/></IconButton>
-              </Tooltip>
-                    {/* <IconButton><CheckCircle /></IconButton> */}
+                      <IconButton onClick={() => handleOpen(data)}><Visibility sx={{ color: '#6c6cd0f0' }} /></IconButton>
+                    </Tooltip>
+                    <Tooltip title="Chỉnh sửa">
+                      <IconButton onClick={() => handleEditOpen(data)}><Edit sx={{ color: '#e8a90e' }} /></IconButton>
+                    </Tooltip>
+                    <Tooltip title="Xóa">
+                      <IconButton><Delete sx={{ color: '#f52c2cdb' }} /></IconButton>
+                    </Tooltip>
+                    <Tooltip title="Phê duyệt">
+                      <IconButton onClick={() => handleApprove(data)}><CheckCircle sx={{ color: '#3bc73b' }} /></IconButton>
+                    </Tooltip>
                   </TableCell>
                 </TableRow>
               );
@@ -81,7 +113,7 @@ const Handover = () => {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={handOverData.length}
+          count={data.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -90,6 +122,7 @@ const Handover = () => {
       </TableContainer>
 
       <DetailDialog open={open} onClose={handleClose} data={selectedData} />
+      <EditModal open={editOpen} onClose={handleEditClose} data={selectedData} onSave={handleSave} />
     </>
   );
 };
