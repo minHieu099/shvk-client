@@ -55,7 +55,7 @@ const Handover = () => {
     console.log('Updated Data:', updatedDataList);
     setEditOpen(false);
 
-    // Hiển thị thông báo cập nhật thành công
+  
     toast.success("Cập nhật thành công!", {
       position: "top-right",
       autoClose: 3000,
@@ -75,7 +75,7 @@ const Handover = () => {
     const doc = renderGbnTT(docData);
 
     Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, `Giao ban ngày.docx`);
+      saveAs(blob, `Bàn giao kíp trực.docx`);
     });
   };
 

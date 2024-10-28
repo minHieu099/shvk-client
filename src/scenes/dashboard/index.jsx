@@ -10,29 +10,32 @@ function Dashboard() {
   const tasks = 75; 
   const agencies = 7; 
 
-  // Filter the data for the specific date
-  const dutyForSpecificDate = dutyScheduleData.find(duty => duty['Ngày'] === '24/10/2024');
+  // Get today's date in "dd/mm/yyyy" format
+  const today = new Date();
+  const todayDate = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
+
+  // Filter the data for today's date
+  const dutyForToday = dutyScheduleData.find(duty => duty['Ngày'] === todayDate);
 
   return (
     <div>
       <Grid container spacing={3} style={{ marginBottom: '20px' }}>
         <Grid item xs={3}>
-          <Card className="grid-card bg-green"> {/* Green card */}
+          <Card className="grid-card bg-green">
             <CardContent className="card-content">
               <Typography variant="h6" className="title">Tổng quân số</Typography>
               <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>
                 {members}
               </Typography>
-              {/* <Typography variant="body2" style={{ color: '#fff' }}>Last Month</Typography> */}
             </CardContent>
-            <Box className="icon-box icon-green"> {/* Icon moved to the right */}
+            <Box className="icon-box icon-green">
               <FaUser size={30} color="white" />
             </Box>
           </Card>
         </Grid>
 
         <Grid item xs={3}>
-          <Card className="grid-card bg-purple"> {/* Another green card */}
+          <Card className="grid-card bg-purple">
             <CardContent className="card-content">
               <Typography variant="h6" className="title">Văn bản</Typography>
               <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>{documents}</Typography>
@@ -44,7 +47,7 @@ function Dashboard() {
         </Grid>
 
         <Grid item xs={3}>
-          <Card className="grid-card bg-blue"> {/* Red card */}
+          <Card className="grid-card bg-blue">
             <CardContent className="card-content">
               <Typography variant="h6" className="title">Nhiệm vụ</Typography>
               <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>{tasks}</Typography>
@@ -56,7 +59,7 @@ function Dashboard() {
         </Grid>
 
         <Grid item xs={3}>
-          <Card className="grid-card bg-yellow"> {/* Blue card */}
+          <Card className="grid-card bg-yellow">
             <CardContent className="card-content">
               <Typography variant="h6" className="title">Đơn vị</Typography>
               <Typography variant="h1" style={{ fontSize: '35px', fontWeight: '700', color: '#fff', lineHeight: '45px' }}>{agencies}</Typography>
@@ -68,10 +71,9 @@ function Dashboard() {
         </Grid>
       </Grid>
 
-
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <Typography variant="h6" className='title-table'>Danh sách trực ngày 24/10/2024</Typography>
+          <Typography variant="h6" className='title-table'>Danh sách trực ngày {todayDate}</Typography>
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
@@ -81,14 +83,18 @@ function Dashboard() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {dutyForSpecificDate && Object.entries(dutyForSpecificDate).map(([position, name], index) => (
+                {dutyForToday ? Object.entries(dutyForToday).map(([position, name], index) => (
                   position !== 'Ngày' && (
                     <TableRow key={index}>
                       <TableCell>{position}</TableCell>
                       <TableCell>{name}</TableCell>
                     </TableRow>
                   )
-                ))}
+                )) : (
+                  <TableRow>
+                    <TableCell colSpan={2}>Không có dữ liệu cho ngày hôm nay</TableCell>
+                  </TableRow>
+                )}
               </TableBody>
             </Table>
           </TableContainer>

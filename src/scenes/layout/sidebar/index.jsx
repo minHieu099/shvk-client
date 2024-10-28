@@ -181,7 +181,7 @@ const SideBar = () => {
           color={colors.gray[300]}
           sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
         >
-          {!collapsed ? "Trực chỉ huy" : " "}
+          {!collapsed ? "Trực ban tác chiến" : " "}
         </Typography>
         <Menu
           menuItemStyles={{
@@ -195,7 +195,7 @@ const SideBar = () => {
           }}
         >
           <Item
-            title="Bàn giao trực chỉ huy"
+            title="Bàn giao kíp trực"
             path="/handover"
             colors={colors}
             icon={<CalendarTodayOutlined />}

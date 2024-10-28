@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Box, TextField, Button, Typography } from '@mui/material';
 
 const EditModal = ({ open, onClose, data, onSave }) => {
-  const TOTAL_QUAN_SO = 156; // Define the total number of personnel
+  const TOTAL_QUAN_SO = 156; 
   const [qsCoMat, setQsCoMat] = useState(0);
   const [congTac, setCongTac] = useState(0);
   const [diHoc, setDiHoc] = useState(0);
@@ -38,7 +38,7 @@ const EditModal = ({ open, onClose, data, onSave }) => {
   }, [data]);
 
   useEffect(() => {
-    // Calculate "Vắng mặt" and update "Có mặt"
+  
     const vangMat = parseInt(congTac) + parseInt(diHoc) + parseInt(phep) + parseInt(tranhThu) + parseInt(om) + parseInt(vien) + parseInt(thaiSan) + parseInt(choHuu) + parseInt(tangCuong) + parseInt(khongLyDo);
     setQsVang(vangMat);
     setQsCoMat(TOTAL_QUAN_SO - vangMat);
@@ -87,7 +87,7 @@ const EditModal = ({ open, onClose, data, onSave }) => {
         transform: 'translate(-50%, -50%)'
       }}>
         <Typography variant="h6" component="h2" textAlign="center" mb={2}>
-          Chỉnh sửa thông tin
+          Cập nhật báo cáo
         </Typography>
         <Box display="flex" justifyContent="space-between">
           <TextField label="Tổng quân số" value={TOTAL_QUAN_SO} disabled variant="outlined" style={{ width: '30%' }} />
@@ -108,9 +108,9 @@ const EditModal = ({ open, onClose, data, onSave }) => {
           <TextField label="Tăng cường" value={tangCuong} onChange={(e) => setTangCuong(e.target.value)} variant="outlined" style={{ width: '18%' }} />
           <TextField label="Không lý do" value={khongLyDo} onChange={(e) => setKhongLyDo(e.target.value)} variant="outlined" style={{ width: '18%' }} />
         </Box>
-        <TextField label="Tình hình trong ngày" fullWidth value={tinhHinh} onChange={(e) => setTinhHinh(e.target.value)} variant="outlined" />
-        <TextField label="Những việc đột xuất xảy ra" fullWidth value={viecDotXuat} onChange={(e) => setViecDotXuat(e.target.value)} variant="outlined" />
-        <TextField label="Nội dung bàn giao" fullWidth value={noiDungBanGiao} onChange={(e) => setNoiDungBanGiao(e.target.value)} variant="outlined" />
+        <TextField label="Tình hình trong ngày" fullWidth value={tinhHinh} onChange={(e) => setTinhHinh(e.target.value)} variant="outlined" multiline  minRows={4}/>
+        <TextField label="Những việc đột xuất xảy ra" fullWidth value={viecDotXuat} onChange={(e) => setViecDotXuat(e.target.value)} variant="outlined" multiline  minRows={4}/>
+        <TextField label="Nội dung bàn giao" fullWidth value={noiDungBanGiao} onChange={(e) => setNoiDungBanGiao(e.target.value)} variant="outlined" multiline  minRows={4}/>
         <Button variant="contained" color="primary" onClick={handleSave}>
           Lưu
         </Button>

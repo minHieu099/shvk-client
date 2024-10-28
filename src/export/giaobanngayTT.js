@@ -15,24 +15,7 @@ import {
   PageBreak,
 } from "docx";
 import formatParagraph from "./formatParagraph";
-// const data = [
-//     {
-//       "id": 2,
-//       "thoigian": "28/01/2024",
-//       "truc_CH": "4// Đặng Quốc Cường",
-//       "truc_ban_cu_1": "Trung tá fsdfsdaf",
-//       "truc_ban_cu_2": "Thiếu tá fsdfdsfd",
-//       "truc_ban_moi_1": "Trung tá fsdfasdfdsa",
-//       "truc_ban_moi_2": "Trung tá fsdgfd",
-//       "tong_qs": "134",
-//       "qs_co_mat": "80",
-//       "qs_vang": "54",
-//       "ly_do": "03 TT, 01 CT, 01 TS",
-//       "tinh_hinh": "- Xử lý FMC mất kết nối; - Xử lí fklsdjlfdskl.",
-//       "viec_dotxuat": "Không",
-//       "noidung_bangiao": "Xử lí FMCfhjsdkljfkldjsf sdjlkfsdfkls"
-//     }
-//   ];
+
 const dotTab = [
   {
     type: TabStopType.LEFT,
@@ -49,7 +32,7 @@ let renderGbnTT = (data) => {
           pageNumberStart: 1,
           page: {
             size: {
-              height: 11905, // (don vi tinh twip)
+              height: 11905,
               width: 16837,
             },
             margin: {
@@ -232,50 +215,7 @@ let renderGbnTT = (data) => {
             ]),
             tabStops: dotTab,
           }),
-          // new Paragraph({
-          //     children: [
-          //         new TextRun({
-          //             text: "- Tổng quân số: có mặt/biên chế:",
-          //             size: 28,
-          //         }),
-          //     ],
-          // }),
-          // new Paragraph({
-          //     children: [
-          //         new TextRun({
-          //             text: "SQ:",
-          //             size: 28,
-          //         }),
-          //         new TextRun({
-          //             text: " ;QNCN:",
-          //             size: 28,
-          //         }),
-          //     ],
-          // }),
-          // new Paragraph({
-          //     children: [
-          //         new TextRun({
-          //             text: "HSQ-BS:",
-          //             size: 28,
-          //         }),
-          //         new TextRun({
-          //             text: " ;CCQP:",
-          //             size: 28,
-          //         }),
-          //     ],
-          // }),
-          // new Paragraph({
-          //     children: [
-          //         new TextRun({
-          //             text: "Phép:",
-          //             size: 28,
-          //         }),
-          //         new TextRun({
-          //             text: " ;Học:",
-          //             size: 28,
-          //         }),
-          //     ],
-          // }),
+
           new Paragraph({
             children: [
               new TextRun({
@@ -289,22 +229,6 @@ let renderGbnTT = (data) => {
             children: formatParagraph(3, [data.tinh_hinh]),
             tabStops: dotTab,
           }),
-          // new Paragraph({
-          //     children: [
-          //         new TextRun({
-          //             text: "- Súng K54:",
-          //             size: 28,
-          //         }),
-          //     ],
-          // }),
-          // new Paragraph({
-          //     children: [
-          //         new TextRun({
-          //             text: "- Súng AK:",
-          //             size: 28,
-          //         }),
-          //     ],
-          // }),
           new Paragraph({
             children: [
               new TextRun({
@@ -336,7 +260,7 @@ let renderGbnTT = (data) => {
           }),
           new Paragraph(""),
           new Paragraph(""),
-          //Ky ten
+
           new Table({
             margins: {
               top: 100,
@@ -375,7 +299,7 @@ let renderGbnTT = (data) => {
                         alignment: AlignmentType.CENTER,
                         children: [
                           new ImageRun({
-                            data: data.signatureImage.split(",")[1], 
+                            data: data.signatureImage.split(",")[1],
                             transformation: {
                               width: 100,
                               height: 50,
@@ -388,7 +312,7 @@ let renderGbnTT = (data) => {
                         alignment: AlignmentType.CENTER,
                         children: [
                           new TextRun({
-                            text: data.truc_ban_cu_1,
+                            text: data.truc_ban_moi_1,
                             size: 28,
                             bold: true,
                             break: 1,
@@ -446,7 +370,7 @@ let renderGbnTT = (data) => {
                         alignment: AlignmentType.CENTER,
                         children: [
                           new ImageRun({
-                            data: data.signatureImage.split(",")[1], 
+                            data: data.signatureImage.split(",")[1],
                             transformation: {
                               width: 100,
                               height: 50,
