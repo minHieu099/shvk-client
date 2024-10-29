@@ -13,10 +13,20 @@ import Stream from "./stream";
 import FAQ from "./faq";
 import Geography from "./geography";
 import Handover from "./handover";
+import HandoverTNV from "./handoverTNV";
+import DiaryTNV from "./diaryTNV";
+import DiaryTBCm from "./diaryTBCm";
+import HandoverTBCm from "./handoverTBCm";
+import ManageAccounts from "./account"
 export {
   Navbar,
   SideBar,
   Dashboard,
   Team,
   Handover,
+  HandoverTNV,
+  DiaryTNV,
+  DiaryTBCm,
+  HandoverTBCm,
+  ManageAccounts
 };

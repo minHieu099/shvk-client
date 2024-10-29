@@ -4,19 +4,14 @@ import { useContext, useState } from "react";
 import { tokens } from "../../../theme";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
 import {
-  BarChartOutlined,
-  CalendarTodayOutlined,
-  ContactsOutlined,
   DashboardOutlined,
-  DonutLargeOutlined,
-  HelpOutlineOutlined,
-  MapOutlined,
   MenuOutlined,
   PeopleAltOutlined,
-  PersonOutlined,
-  ReceiptOutlined,
-  TimelineOutlined,
-  WavesOutlined,
+  CalendarMonth,
+  ManageAccounts,
+  Handshake,
+  Task,
+  MeetingRoom
 } from "@mui/icons-material";
 import avatar from "../../../assets/images/logo_t286.png";
 import logo from "../../../assets/images/logo_t286.png";
@@ -28,6 +23,7 @@ const SideBar = () => {
   const { toggled, setToggled } = useContext(ToggledContext);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   return (
     <Sidebar
       backgroundColor={colors.primary[400]}
@@ -65,15 +61,9 @@ const SideBar = () => {
               <Box
                 display="flex"
                 alignItems="center"
-                //                justifyContent="center"  // Căn giữa theo chiều ngang
                 gap="12px"
                 sx={{ transition: ".3s ease" }}
               >
-                {/* <img
-                  style={{ width: "30px", height: "30px", borderRadius: "8px" }}
-                  src={logo}
-                  alt="Argon"
-                /> */}
                 <Typography
                   variant="h5"
                   fontWeight="bold"
@@ -130,6 +120,11 @@ const SideBar = () => {
         <Menu
           menuItemStyles={{
             button: {
+              "&.selected": {
+                border: "2px solid #00008B", // Dark blue border
+                color: "#FFFFFF", // White text
+                backgroundColor: "transparent",
+              },
               ":hover": {
                 color: "#868dfb",
                 background: "transparent",
@@ -145,9 +140,12 @@ const SideBar = () => {
             icon={<DashboardOutlined />}
           />
         </Menu>
+        
+        {/* Bold Labels */}
         <Typography
           variant="h6"
           color={colors.gray[300]}
+          fontWeight="bold" // Bold for "Tham mưu"
           sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
         >
           {!collapsed ? "Tham mưu" : " "}
@@ -173,12 +171,53 @@ const SideBar = () => {
             title="Quản lý lịch trực"
             path="/schedule-management"
             colors={colors}
-            icon={<ContactsOutlined />}
+            icon={<CalendarMonth />}
+          />
+          <Item
+            title="Quản lý Tài khoản"
+            path="/manageAccounts"
+            colors={colors}
+            icon={<ManageAccounts />}
           />
         </Menu>
+
         <Typography
           variant="h6"
           color={colors.gray[300]}
+          fontWeight="bold" // Bold for "Trực nội vụ"
+          sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
+        >
+          {!collapsed ? "Trực nội vụ" : " "}
+        </Typography>
+        <Menu
+          menuItemStyles={{
+            button: {
+              ":hover": {
+                color: "#868dfb",
+                background: "transparent",
+                transition: ".4s ease",
+              },
+            },
+          }}
+        >
+          <Item
+            title="Bàn giao kíp trực"
+            path="/handoverTNV"
+            colors={colors}
+            icon={<Handshake />}
+          />
+          <Item
+            title="Nhật ký trực ban"
+            path="/diaryTNV"
+            colors={colors}
+            icon={<Task />}
+          />
+        </Menu>
+
+        <Typography
+          variant="h6"
+          color={colors.gray[300]}
+          fontWeight="bold" // Bold for "Trực ban tác chiến"
           sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
         >
           {!collapsed ? "Trực ban tác chiến" : " "}
@@ -198,18 +237,20 @@ const SideBar = () => {
             title="Bàn giao kíp trực"
             path="/handover"
             colors={colors}
-            icon={<CalendarTodayOutlined />}
+            icon={<Handshake />}
           />
           <Item
             title="Giao ban trực tuyến"
             path="/online-meeting"
             colors={colors}
-            icon={<PersonOutlined />}
+            icon={<MeetingRoom />}
           />
         </Menu>
+
         <Typography
           variant="h6"
           color={colors.gray[300]}
+          fontWeight="bold" // Bold for "Trực ban các cụm"
           sx={{ m: "15px 0 5px 20px", fontSize: '16px' }}
         >
           {!collapsed ? "Trực ban các cụm" : " "}
@@ -226,34 +267,16 @@ const SideBar = () => {
           }}
         >
           <Item
-            title="Bar Chart"
-            path="/bar"
+            title="Bàn giao kíp trực"
+            path="/handoverTBCm"
             colors={colors}
-            icon={<BarChartOutlined />}
+            icon={<Handshake />}
           />
           <Item
-            title="Pie Chart"
-            path="/pie"
+            title="Nhật ký trực ban"
+            path="/diaryTBCm"
             colors={colors}
-            icon={<DonutLargeOutlined />}
-          />
-          <Item
-            title="Line Chart"
-            path="/line"
-            colors={colors}
-            icon={<TimelineOutlined />}
-          />
-          <Item
-            title="Geography Chart"
-            path="/geography"
-            colors={colors}
-            icon={<MapOutlined />}
-          />
-          <Item
-            title="Stream Chart"
-            path="/stream"
-            colors={colors}
-            icon={<WavesOutlined />}
+            icon={<Task />}
           />
         </Menu>
       </Box>
