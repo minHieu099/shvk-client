@@ -1,24 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box } from '@mui/material';
 import { FaUser, FaFileAlt, FaTasks, FaBuilding } from 'react-icons/fa';
 import dutyScheduleData from '../data/duty_schedule.json';
 import documentMixedData from '../data/document_mixed.json';
 
 function Dashboard() {
+  const [message, setMessage] = useState('');
   const members = 159; 
   const documents = 10; 
   const tasks = 75; 
   const agencies = 7; 
 
-  // Get today's date in "dd/mm/yyyy" format
+
   const today = new Date();
   const todayDate = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
 
-  // Filter the data for today's date
+
   const dutyForToday = dutyScheduleData.find(duty => duty['Ngày'] === todayDate);
+
+  useEffect(() => {
+    const ws = new WebSocket('ws://localhost:19999'); 
+
+    ws.onopen = () => {
+      console.log('Connected to WebSocket server');
+    };
+
+    ws.onmessage = (event) => {
+      setMessage(event.data);
+    };
+
+    ws.onclose = () => {
+      console.log('Disconnected from WebSocket server');
+    };
+
+    return () => {
+      ws.close();
+    };
+  }, []);
 
   return (
     <div>
+      {message && <div className="greeting-message">{message}</div>}
       <Grid container spacing={3} style={{ marginBottom: '20px' }}>
         <Grid item xs={3}>
           <Card className="grid-card bg-green">
