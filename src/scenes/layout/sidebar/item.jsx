@@ -13,8 +13,8 @@ const Item = ({ title, path, icon }) => {
       icon={icon}
       rootStyles={{
         color: isSelected ? "#FFFFFF" : "", // White text if selected, default color otherwise
-        backgroundColor: isSelected ? "#00008B" : "transparent", // Dark blue background if selected
-        border: isSelected ? "2px solid #00008B" : "none", // Dark blue border if selected
+        backgroundColor: isSelected ? "#1a435e" : "transparent", // Dark blue background if selected
+        border: isSelected ? "2px solid #1a435e" : "none", // Dark blue border if selected
         borderRadius: "8px", // Optional: add some rounding for aesthetics
       }}
     >

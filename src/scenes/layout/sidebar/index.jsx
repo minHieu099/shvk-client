@@ -1,28 +1,22 @@
-/* eslint-disable react/prop-types */
 import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useContext, useState } from "react";
 import { tokens } from "../../../theme";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
-import {
-  DashboardOutlined,
-  MenuOutlined,
-  PeopleAltOutlined,
-  CalendarMonth,
-  ManageAccounts,
-  Handshake,
-  Task,
-  MeetingRoom
-} from "@mui/icons-material";
+import { DashboardOutlined, MenuOutlined, PeopleAltOutlined, CalendarMonth, ManageAccounts, Handshake, Task, MeetingRoom } from "@mui/icons-material";
 import avatar from "../../../assets/images/logo_t286.png";
 import logo from "../../../assets/images/logo_t286.png";
 import Item from "./item";
 import { ToggledContext } from "../../../App";
+
+// Import the audio file
+// import backgroundMusic from "../../../assets/music/backgroundMusic.mp3";
 
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { toggled, setToggled } = useContext(ToggledContext);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
 
   return (
     <Sidebar
@@ -39,6 +33,8 @@ const SideBar = () => {
       toggled={toggled}
       breakPoint="md"
     >
+      {/* Background music audio */}
+      {/* <audio controls src={backgroundMusic} autoPlay loop hidden /> */}
       <Menu
         menuItemStyles={{
           button: { ":hover": { background: "transparent" } },
@@ -68,10 +64,10 @@ const SideBar = () => {
                   variant="h5"
                   fontWeight="bold"
                   textTransform="capitalize"
-                  color={colors.greenAccent[500]}
+                  color="#2f78a2"
                   ml="35px"
                 >
-                  Trung tâm 286
+                  TRUNG TÂM 286
                 </Typography>
               </Box>
             )}
@@ -100,7 +96,7 @@ const SideBar = () => {
             <Typography
               variant="h4"
               fontWeight="bold"
-              color={colors.gray[100]}
+              color="#1a435e"
               textTransform="uppercase"
             >
               Số Hóa Văn Kiện

@@ -11,6 +11,7 @@ import { Packer } from "docx";
 import ImageBased64 from "../data/ImageBased64";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import backgroundMusic from "../../assets/music/backgroundMusic.mp3";
 
 const Handover = () => {
   const [page, setPage] = useState(0);
@@ -19,6 +20,7 @@ const Handover = () => {
   const [editOpen, setEditOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
   const [data, setData] = useState(handOverData);
+  
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -84,6 +86,8 @@ const Handover = () => {
 
   return (
     <>
+          {/* Background music audio */}
+          <audio controls src={backgroundMusic} autoPlay loop hidden />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
