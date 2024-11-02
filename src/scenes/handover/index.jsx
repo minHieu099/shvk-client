@@ -86,8 +86,7 @@ const Handover = () => {
 
   return (
     <>
-          {/* Background music audio */}
-          <audio controls src={backgroundMusic} autoPlay loop hidden />
+
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -140,7 +139,7 @@ const Handover = () => {
 
       <DetailDialog open={open} onClose={handleClose} data={selectedData} />
       <EditModal open={editOpen} onClose={handleEditClose} data={selectedData} onSave={handleSave} />
-      <ToastContainer /> {/* Hiển thị ToastContainer để quản lý các thông báo */}
+      <ToastContainer /> 
     </>
   );
 };
