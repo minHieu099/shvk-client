@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import * as ExcelJS from 'exceljs';
 import { toast } from 'react-toastify';
 import officersData from '../data/officers.json';
+import ErrorModal from './ErrorModal';
 
 const ExcelUploader = ({ isOpen, onClose, onDataUploaded }) => {
+  const [errors, setErrors] = useState([]);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+
   const validateDate = (dateStr) => {
     const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
     return regex.test(dateStr);
@@ -21,6 +25,7 @@ const ExcelUploader = ({ isOpen, onClose, onDataUploaded }) => {
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     const workbook = new ExcelJS.Workbook();
+    const errorList = [];
     
     try {
       await workbook.xlsx.load(file);
@@ -29,7 +34,7 @@ const ExcelUploader = ({ isOpen, onClose, onDataUploaded }) => {
       let hasError = false;
 
       worksheet.eachRow((row, rowNumber) => {
-        if (rowNumber === 1) return; // Skip header row
+        if (rowNumber === 1) return;
 
         const rowData = {
           'Ngày': row.getCell(1).text,
@@ -40,25 +45,22 @@ const ExcelUploader = ({ isOpen, onClose, onDataUploaded }) => {
           'Trực chỉ huy': row.getCell(6).text
         };
 
-        // Validate date format
+        // Validate date
         if (!validateDate(rowData['Ngày'])) {
-          toast.error(`Dòng ${rowNumber}: Định dạng ngày không hợp lệ`);
+          errorList.push(`Dòng ${rowNumber}, cột Ngày: "${rowData['Ngày']}" - Định dạng ngày không hợp lệ (DD/MM/YYYY)`);
           hasError = true;
-          return;
         }
 
-        // Validate officers exist and no numbers in names
+        // Validate officers
         Object.entries(rowData).forEach(([key, value]) => {
           if (key !== 'Ngày') {
             if (!validateNoNumbers(value)) {
-              toast.error(`Dòng ${rowNumber}: ${key} không được chứa số`);
+              errorList.push(`Dòng ${rowNumber}, cột ${key}: "${value}" - Không được chứa số`);
               hasError = true;
-              return;
             }
             if (!validateOfficer(value)) {
-              toast.error(`Dòng ${rowNumber}: ${value} không tồn tại trong CSDL`);
+              errorList.push(`Dòng ${rowNumber}, cột ${key}: "${value}" - Không tồn tại trong CSDL`);
               hasError = true;
-              return;
             }
           }
         });
@@ -68,38 +70,51 @@ const ExcelUploader = ({ isOpen, onClose, onDataUploaded }) => {
         }
       });
 
-      if (!hasError && data.length > 0) {
+      if (hasError) {
+        setErrors(errorList);
+        setShowErrorModal(true);
+        toast.error('Upload lịch trực thất bại!');
+      } else {
         onDataUploaded(data);
         onClose();
         toast.success('Upload lịch trực thành công!');
       }
     } catch (error) {
+      setErrors(['Lỗi đọc file Excel: ' + error.message]);
+      setShowErrorModal(true);
       toast.error('Có lỗi xảy ra khi đọc file Excel');
-      console.error(error);
     }
   };
 
   return (
-    <Dialog open={isOpen} onClose={onClose}>
-      <DialogTitle>Tải lên lịch trực</DialogTitle>
-      <DialogContent>
-        <input
-          type="file"
-          accept=".xlsx"
-          onChange={handleFileUpload}
-          style={{ display: 'none' }}
-          id="excel-upload"
-        />
-        <label htmlFor="excel-upload">
-          <Button variant="contained" component="span">
-            Chọn file Excel
-          </Button>
-        </label>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose}>Đóng</Button>
-      </DialogActions>
-    </Dialog>
+    <>
+      <Dialog open={isOpen} onClose={onClose}>
+        <DialogTitle>Tải lên lịch trực</DialogTitle>
+        <DialogContent>
+          <input
+            type="file"
+            accept=".xlsx"
+            onChange={handleFileUpload}
+            style={{ display: 'none' }}
+            id="excel-upload"
+          />
+          <label htmlFor="excel-upload">
+            <Button variant="contained" component="span">
+              Chọn file Excel
+            </Button>
+          </label>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose}>Đóng</Button>
+        </DialogActions>
+      </Dialog>
+
+      <ErrorModal 
+        isOpen={showErrorModal}
+        onClose={() => setShowErrorModal(false)}
+        errors={errors}
+      />
+    </>
   );
 };
 
