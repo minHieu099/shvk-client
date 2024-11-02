@@ -28,7 +28,7 @@ import { ColorModeContext, useMode } from "./theme";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import documentMixedData from "./scenes/data/document_mixed.json";
-import backgroundMusic from "./assets/music/xoxo.mp3";
+import backgroundMusic from "./assets/music/baothuc.mp3";
 import loa from "./assets/images/loa.png"
 
 export const ToggledContext = createContext(null);
@@ -200,8 +200,8 @@ function App() {
                       <Table>
                         <TableHead>
                           <TableRow>
-                            <TableCell>Document Name</TableCell>
-                            <TableCell>Status</TableCell>
+                            <TableCell>Văn bản</TableCell>
+                            <TableCell>Trạng thái</TableCell>
                           </TableRow>
                         </TableHead>
                         <TableBody>
