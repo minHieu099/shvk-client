@@ -20,14 +20,16 @@ import { Packer } from "docx";
 import ImageBased64 from "../data/ImageBased64";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DetailDialog from './DetailDialog';
+import EditModal from './EditModal';
 
 const OnlineMeeting = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [selectedData, setSelectedData] = useState(null);
-
-  // Data mẫu cho bảng
-  const meetingData = [
+  const [open, setOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+  const [meetingData, setMeetingData] = useState([
     {
       thoigian: "15/03/2024",
       truc_CHTT: "Đại tá Nguyễn Văn A",
@@ -55,7 +57,7 @@ const OnlineMeeting = () => {
       noidung_dukien: "- 07:00: Chào cờ đầu tuần\n- 08:00: Họp giao ban đơn vị\n- 14:00: Huấn luyện theo kế hoạch",
       noidung_ketluan: "- Tiếp tục duy trì nghiêm túc chế độ trực SSCĐ\n- Tăng cường công tác kiểm tra, đôn đốc\n- Thực hiện tốt công tác phòng chống dịch"
     }
-  ];
+  ]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -76,6 +78,43 @@ const OnlineMeeting = () => {
       saveAs(blob, `Giao ban ngày ${data.thoigian}.docx`);
     });
     toast.success("Xuất biên bản thành công!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
+  const handleOpen = (data) => {
+    setSelectedData(data);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedData(null);
+  };
+
+  const handleEditOpen = (data) => {
+    setSelectedData(data);
+    setEditOpen(true);
+  };
+
+  const handleEditClose = () => {
+    setEditOpen(false);
+    setSelectedData(null);
+  };
+
+  const handleSave = (updatedData) => {
+    const updatedMeetingData = meetingData.map(item => 
+      item.thoigian === updatedData.thoigian ? updatedData : item
+    );
+    setMeetingData(updatedMeetingData);
+    setEditOpen(false);
+
+    toast.success("Cập nhật thành công!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
@@ -124,10 +163,14 @@ const OnlineMeeting = () => {
                   <TableCell>{`${meeting.quanso_co_mat}/${meeting.quanso_tong}`}</TableCell>
                   <TableCell sx={{ width: '180px' }}>
                     <Tooltip title="Xem chi tiết">
-                      <IconButton><Visibility sx={{ color: '#6c6cd0f0' }} /></IconButton>
+                      <IconButton onClick={() => handleOpen(meeting)}>
+                        <Visibility sx={{ color: '#6c6cd0f0' }} />
+                      </IconButton>
                     </Tooltip>
                     <Tooltip title="Chỉnh sửa">
-                      <IconButton><Edit sx={{ color: '#e8a90e' }} /></IconButton>
+                      <IconButton onClick={() => handleEditOpen(meeting)}>
+                        <Edit sx={{ color: '#e8a90e' }} />
+                      </IconButton>
                     </Tooltip>
                     <Tooltip title="Xóa">
                       <IconButton><Delete sx={{ color: '#f52c2cdb' }}/></IconButton>
@@ -151,6 +194,8 @@ const OnlineMeeting = () => {
         />
       </TableContainer>
       <ToastContainer />
+      <DetailDialog open={open} onClose={handleClose} data={selectedData} />
+      <EditModal open={editOpen} onClose={handleEditClose} data={selectedData} onSave={handleSave} />
     </Box>
   );
 };
