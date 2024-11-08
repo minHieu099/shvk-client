@@ -57,6 +57,23 @@ const EditModal = ({ open, onClose, data, onSave }) => {
     }
   }, [quanSoTong, quanSoCoMat]);
 
+  useEffect(() => {
+    const vangMat = parseInt(quanSoPhep || 0) + 
+                    parseInt(quanSoHoc || 0) + 
+                    parseInt(quanSoOm || 0) + 
+                    parseInt(quanSoCT || 0) + 
+                    parseInt(quanSoTT || 0) + 
+                    parseInt(quanSoKhac || 0);
+    setQuanSoVang(vangMat.toString());
+  }, [quanSoPhep, quanSoHoc, quanSoOm, quanSoCT, quanSoTT, quanSoKhac]);
+
+  useEffect(() => {
+    if (quanSoTong && quanSoVang) {
+      const coMat = parseInt(quanSoTong) - parseInt(quanSoVang);
+      setQuanSoCoMat(coMat.toString());
+    }
+  }, [quanSoTong, quanSoVang]);
+
   const handleSave = () => {
     const updatedData = {
       ...data,
@@ -111,7 +128,7 @@ const EditModal = ({ open, onClose, data, onSave }) => {
             className="text-field"
             label="Tổng quân số" 
             value={quanSoTong} 
-            onChange={(e) => setQuanSoTong(e.target.value)} 
+            disabled
             variant="outlined" 
             style={{ width: '32%' }} 
           />
@@ -119,7 +136,7 @@ const EditModal = ({ open, onClose, data, onSave }) => {
             className="text-field"
             label="Có mặt" 
             value={quanSoCoMat} 
-            onChange={(e) => setQuanSoCoMat(e.target.value)} 
+            disabled
             variant="outlined" 
             style={{ width: '32%' }} 
           />

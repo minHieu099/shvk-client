@@ -261,8 +261,14 @@ import {
                                         ],
                                     }),
                                     new Paragraph({
-                                        children: formatParagraph(3,[data.ketqua_diemmanh]),
-                                        tabStops: dotTab,
+                                        children: data.ketqua_diemmanh.split('\n').map((line, lineIndex) => 
+                                            new TextRun({
+                                                text: line.trim(),
+                                                size: 28,
+                                                break: lineIndex > 0 ? 1 : 0  // Chỉ break từ dòng thứ 2 trở đi
+                                            })
+                                        ),
+                                        tabStops: dotTab
                                     }),
                                     new Paragraph({
                                         children: [
@@ -273,7 +279,13 @@ import {
                                         ],
                                     }),
                                     new Paragraph({
-                                        children: formatParagraph(3,[data.ketqua_tontai]),
+                                        children: data.ketqua_tontai.split('\n').map((line, lineIndex) => 
+                                            new TextRun({
+                                                text: line.trim(),
+                                                size: 28,
+                                                break: lineIndex > 0 ? 1 : 0  // Chỉ break từ dòng thứ 2 trở đi
+                                            })
+                                        ),
                                         tabStops: dotTab,
                                     }),
                                                                       
@@ -291,7 +303,13 @@ import {
                                         ],
                                     }),
                                     new Paragraph({
-                                        children:formatParagraph(3,[data.noidung_dukien]),
+                                        children: data.noidung_dukien.split('\n').map((line, lineIndex) => 
+                                            new TextRun({
+                                                text: line.trim(),
+                                                size: 28,
+                                                break: lineIndex > 0 ? 1 : 0  // Chỉ break từ dòng thứ 2 trở đi
+                                            })
+                                        ),
                                         tabStops: dotTab
                                     }),
                                     new Paragraph({
@@ -304,7 +322,13 @@ import {
                                         ],
                                     }),
                                     new Paragraph({
-                                        children:formatParagraph(4,[data.noidung_dukien]),
+                                        children: data.noidung_dukien.split('\n').map((line, lineIndex) => 
+                                            new TextRun({
+                                                text: line.trim(),
+                                                size: 28,
+                                                break: lineIndex > 0 ? 1 : 0  // Chỉ break từ dòng thứ 2 trở đi
+                                            })
+                                        ),
                                         tabStops: dotTab
                                     }),
                                     new Paragraph({
@@ -317,7 +341,13 @@ import {
                                         ],
                                     }),
                                     new Paragraph({
-                                        children: formatParagraph(3,[data.noidung_ketluan]),
+                                        children: data.noidung_ketluan.split('\n').map((line, lineIndex) => 
+                                            new TextRun({
+                                                text: line.trim(),
+                                                size: 28,
+                                                break: lineIndex > 0 ? 1 : 0  // Chỉ break từ dòng thứ 2 trở đi
+                                            })
+                                        ),
                                         tabStops: dotTab
                                     }),
                                     new Paragraph({

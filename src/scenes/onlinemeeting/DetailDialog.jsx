@@ -134,9 +134,39 @@ const DetailDialog = ({ open, onClose, data }) => {
             </Typography>
             <Box sx={{ marginLeft: "10px" }}>
               <Typography sx={{ fontWeight: 'bold' }}>- Điểm mạnh:</Typography>
-              <Typography sx={{ whiteSpace: 'pre-line', marginLeft: "10px" }}>{data.ketqua_diemmanh}</Typography>
+              <Typography 
+                sx={{ 
+                  whiteSpace: 'pre-line', 
+                  marginLeft: "10px",
+                  '& p': {
+                    margin: '8px 0'
+                  }
+                }}
+              >
+                {data.ketqua_diemmanh.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </Typography>
               <Typography sx={{ fontWeight: 'bold' }}>- Điểm yếu:</Typography>
-              <Typography sx={{ whiteSpace: 'pre-line', marginLeft: "10px" }}>{data.ketqua_tontai}</Typography>
+              <Typography 
+                sx={{ 
+                  whiteSpace: 'pre-line', 
+                  marginLeft: "10px",
+                  '& p': {
+                    margin: '8px 0'
+                  }
+                }}
+              >
+                {data.ketqua_tontai.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </Typography>
             </Box>
 
             <Typography variant="h5" sx={{ color: '#003366', fontWeight: 'bold', marginTop: 2 }}>
