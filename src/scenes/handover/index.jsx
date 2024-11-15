@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, TablePagination, Box, Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
-import { Visibility, Edit, Delete, CheckCircle } from '@mui/icons-material';
+import { Visibility, Edit, Delete, CheckCircle, FileDownload } from '@mui/icons-material';
 import handOverData from '../data/handOverData.json';
 import DetailDialog from './DetailDialog';
 import Tooltip from '@mui/material/Tooltip';
@@ -96,6 +96,16 @@ const Handover = () => {
 
     Packer.toBlob(doc).then((blob) => {
       saveAs(blob, `Bàn giao kíp trực.docx`);
+      
+      toast.success("Bàn giao thành công!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     });
   };
 
@@ -116,15 +126,23 @@ const Handover = () => {
     const startDateFormatted = dateRange.startDate.format('DD/MM/YYYY');
     const endDateFormatted = dateRange.endDate.format('DD/MM/YYYY');
     
-    const filteredData = data.filter(item => {
-      const itemDate = dayjs(item.thoigian, 'DD/MM/YYYY');
-      const start = dateRange.startDate.startOf('day');
-      const end = dateRange.endDate.endOf('day');
-      
-      return itemDate.isAfter(start) || itemDate.isSame(start) && 
-             (itemDate.isBefore(end) || itemDate.isSame(end));
-    });
-    // Sử dụng hàm renderGbnTTBatch
+    const filteredData = data
+      .filter(item => {
+        const itemDate = dayjs(item.thoigian, 'DD/MM/YYYY');
+        const start = dateRange.startDate.startOf('day');
+        const end = dateRange.endDate.endOf('day');
+        
+        return itemDate.isAfter(start) || itemDate.isSame(start) && 
+               (itemDate.isBefore(end) || itemDate.isSame(end));
+      })
+      .sort((a, b) => {
+        // Chuyển đổi chuỗi ngày thành đối tượng dayjs để so sánh
+        const dateA = dayjs(a.thoigian, 'DD/MM/YYYY');
+        const dateB = dayjs(b.thoigian, 'DD/MM/YYYY');
+        return dateA.diff(dateB); // Sắp xếp tăng dần
+      });
+
+    // Sử dụng hàm renderGbnTTBatch với dữ liệu đã được sắp xếp
     const doc = renderGbnTTBatch({
       startDate: startDateFormatted,
       endDate: endDateFormatted,
@@ -136,7 +154,7 @@ const Handover = () => {
       saveAs(blob, `Báo cáo giao ban ${startDateFormatted} đến ${endDateFormatted}.docx`);
       handleExportModalClose();
       
-      toast.success("Xuất báo cáo thành công!", {
+      toast.success("Xuất quyển báo cáo thành công!", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -150,81 +168,6 @@ const Handover = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label="Chọn ngày"
-            value={value}
-            onChange={(newValue) => setValue(newValue)}
-            format="DD/MM/YYYY"
-          />
-        </LocalizationProvider> */}
-        
-        <Button 
-          variant="contained" 
-          sx={{ 
-            bgcolor: '#1976d2',
-            color: 'white',
-            '&:hover': { bgcolor: '#1565c0' }
-          }}
-          onClick={handleExportModalOpen}  
-        >
-          Xuất báo cáo hàng loạt
-        </Button>
-      </Box>
-
-      <Dialog open={openExportModal} onClose={handleExportModalClose}>
-        <DialogTitle>Chọn khoảng thời gian xuất báo cáo</DialogTitle>
-        <DialogContent>
-          <Box sx={{ mt: 2 }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <Box sx={{ mb: 2 }}>
-                <DatePicker
-                  label="Từ ngày"
-                  value={dateRange.startDate}
-                  onChange={(newValue) => setDateRange(prev => ({ ...prev, startDate: newValue }))}
-                  format="DD/MM/YYYY"
-                  sx={{ width: '100%' }}
-                />
-              </Box>
-              <Box>
-                <DatePicker
-                  label="Đến ngày"
-                  value={dateRange.endDate}
-                  onChange={(newValue) => setDateRange(prev => ({ ...prev, endDate: newValue }))}
-                  format="DD/MM/YYYY"
-                  sx={{ width: '100%' }}
-                />
-              </Box>
-            </LocalizationProvider>
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <Button 
-            onClick={handleExportModalClose}
-            variant="contained"
-            sx={{ 
-              bgcolor: '#d32f2f',
-              color: 'white',
-              '&:hover': { bgcolor: '#b71c1c' }
-            }}
-          >
-            Hủy
-          </Button>
-          <Button 
-            onClick={handleExportBatch} 
-            variant="contained"
-            sx={{ 
-              bgcolor: '#2e7d32',
-              color: 'white',
-              '&:hover': { bgcolor: '#1b5e20' }
-            }}
-          >
-            OK
-          </Button>
-        </DialogActions>
-      </Dialog>
-
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -278,6 +221,95 @@ const Handover = () => {
       <DetailDialog open={open} onClose={handleClose} data={selectedData} />
       <EditModal open={editOpen} onClose={handleEditClose} data={selectedData} onSave={handleSave} />
       <ToastContainer /> 
+
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            label="Chọn ngày"
+            value={value}
+            onChange={(newValue) => setValue(newValue)}
+            format="DD/MM/YYYY"
+          />
+        </LocalizationProvider> */}
+        
+        <Button 
+          variant="contained" 
+          sx={{ 
+            bgcolor: '#1976d2',
+            color: 'white',
+            '&:hover': { bgcolor: '#1565c0' },
+            display: 'flex',
+            alignItems: 'center',
+          }}
+          onClick={handleExportModalOpen}
+          startIcon={<FileDownload />}
+        >
+          Xuất quyển báo cáo
+        </Button>
+      </Box>
+
+      <Dialog 
+        open={openExportModal} 
+        onClose={handleExportModalClose}
+        maxWidth="sm"
+        PaperProps={{
+          sx: {
+            position: 'fixed',
+            top: '23%',  // Di chuyển dialog lên phía trên
+            m: 0  // Xóa margin mặc định
+          }
+        }}
+      >
+        <DialogTitle>Chọn khoảng thời gian xuất báo cáo</DialogTitle>
+        <DialogContent>
+          <Box sx={{ mt: 2 }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <Box sx={{ mb: 2 }}>
+                <DatePicker
+                  label="Từ ngày"
+                  value={dateRange.startDate}
+                  onChange={(newValue) => setDateRange(prev => ({ ...prev, startDate: newValue }))}
+                  format="DD/MM/YYYY"
+                  sx={{ width: '100%' }}
+                />
+              </Box>
+              <Box>
+                <DatePicker
+                  label="Đến ngày"
+                  value={dateRange.endDate}
+                  onChange={(newValue) => setDateRange(prev => ({ ...prev, endDate: newValue }))}
+                  format="DD/MM/YYYY"
+                  sx={{ width: '100%' }}
+                />
+              </Box>
+            </LocalizationProvider>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button 
+            onClick={handleExportModalClose}
+            variant="contained"
+            sx={{ 
+              bgcolor: '#d32f2f',
+              color: 'white',
+              '&:hover': { bgcolor: '#b71c1c' }
+            }}
+          >
+            Hủy
+          </Button>
+          <Button 
+            onClick={handleExportBatch} 
+            variant="contained"
+            sx={{ 
+              bgcolor: '#2e7d32',
+              color: 'white',
+              '&:hover': { bgcolor: '#1b5e20' }
+            }}
+          >
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

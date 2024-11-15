@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Select, MenuItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, IconButton, Button } from '@mui/material';
-import { Visibility, Edit, Delete } from '@mui/icons-material';
+import { Visibility, Edit, Delete, PersonAdd } from '@mui/icons-material';
 import officersData from '../data/officers.json';
 import AddOfficerModal from './AddOfficerModal';
 import Tooltip from '@mui/material/Tooltip';
@@ -41,7 +41,7 @@ function Team() {
       onChange={(e) => setSelectedGroup(e.target.value)}
       displayEmpty
       style={{
-        width: '8%',        
+        width: '10%',        
         marginLeft: '1%',     
         height: '42px',
       }}
@@ -56,12 +56,17 @@ function Team() {
       className="create-new-btn"
       variant="contained"
       style={{
-        width: '10%',               // Độ rộng button
-        marginRight: '1%',          // Cách lề phải 3%
+        width: '12%',
+        marginRight: '1%',
+        // height: '42px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
       onClick={() => setIsModalOpen(true)}
+      startIcon={<PersonAdd />}
     >
-      Thêm cán bộ
+      <span style={{ marginTop: '5px' }}>Thêm cán bộ</span>
     </Button>
   </Box>
 
